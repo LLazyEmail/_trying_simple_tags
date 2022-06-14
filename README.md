@@ -16,3 +16,6 @@ https://github.com/teleporthq/teleport-code-generators
 https://www.npmjs.com/package/@jkob/node-html-renderer
 
 https://www.npmjs.com/package/premail
+
+
+https://dev.to/azure/too-hard-too-soft-just-right-rendering-html-with-lit-html-1km8
