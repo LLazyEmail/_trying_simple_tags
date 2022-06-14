@@ -21,3 +21,7 @@ https://www.npmjs.com/package/premail
 https://dev.to/azure/too-hard-too-soft-just-right-rendering-html-with-lit-html-1km8
 
 https://github.com/runem/lit-analyzer/tree/master/packages/ts-lit-plugin
+
+
+https://github.com/web-padawan/awesome-lit
+
