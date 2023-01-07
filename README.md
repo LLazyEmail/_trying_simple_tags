@@ -3,8 +3,8 @@
 
 
 
-https://www.npmjs.com/package/htmlhammer
-https://www.npmjs.com/package/html-template-tag
+- https://www.npmjs.com/package/htmlhammer
+- https://www.npmjs.com/package/html-template-tag
 
 https://lit.dev/docs/v1/lit-html/introduction/ + https://www.npmjs.com/package/tag-html
 https://www.npmjs.com/package/common-tags
