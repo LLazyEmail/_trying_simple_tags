@@ -1,6 +1,9 @@
 # _trying_simple_tags
 
 
+## atherdon-newsletter-js-layouts-typography
+
+Plain JS typography template for MTE plugin
 
 
 - https://www.npmjs.com/package/htmlhammer
