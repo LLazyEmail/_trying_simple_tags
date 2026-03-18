@@ -1,27 +1,21 @@
 import stringifyAttributes from 'stringify-attributes';
 
-const listItemComponent = ({content}) => {
+const listItemComponent = ({ content }) => {
+  const attributes = {
+    style: `mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;`,
+  };
 
-    const attributes = {
-      style: `mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;`
-    };
-    
-    const attributesStr = stringifyAttributes(attributes);
-  
-    console.log(attributesStr);
+  const attributesStr = stringifyAttributes(attributes);
 
-    const attributes2 = {
-        dir: `ltr`,
-        role: `presentation`,
-        style: `line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;`
-    }
+  const attributes2 = {
+    dir: `ltr`,
+    role: `presentation`,
+    style: `line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;`,
+  };
 
-    const attributesStr2 = stringifyAttributes(attributes2);
-  
-    console.log(attributesStr2);
-  
-    return `<li ${attributesStr} ><p ${attributesStr2} >${content}</p></li>`;
-}
+  const attributesStr2 = stringifyAttributes(attributes2);
 
+  return `<li ${attributesStr} ><p ${attributesStr2} >${content}</p></li>`;
+};
 
 export default listItemComponent;

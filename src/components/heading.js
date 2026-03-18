@@ -1,7 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 
-const headingComponent = ({content}) => {
-
+const headingComponent = ({ content }) => {
   const attributes = {
     class: `mc-toc-title`,
     dir: `ltr`,
@@ -10,12 +9,10 @@ const headingComponent = ({content}) => {
 
   const attributesStr = stringifyAttributes(attributes);
 
-  console.log(attributesStr);
-
   return `<h3 ${attributesStr} >
     <span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif">
     <span style="font-size:18px">${content}</span></span>
-  </h3>`
-}
+  </h3>`;
+};
 
 export default headingComponent;

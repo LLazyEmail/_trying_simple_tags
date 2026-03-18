@@ -1,7 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 
-const buttonComponent = ({href, content}) => {
-
+const buttonComponent = ({ href, content }) => {
   const attributes = {
     class: `mlContentButton`,
     href: href,
@@ -11,8 +10,7 @@ const buttonComponent = ({href, content}) => {
 
   const attributesStr = stringifyAttributes(attributes);
 
-  console.log(attributesStr);
-  return `<a ${attributesStr} >${content}</a>`
-}
+  return `<a ${attributesStr} >${content}</a>`;
+};
 
 export default buttonComponent;
