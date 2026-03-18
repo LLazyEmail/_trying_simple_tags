@@ -1,59 +1,63 @@
 # _trying_simple_tags
 
+
 ## atherdon-newsletter-js-layouts-typography
 
-Plain JS typography template for MTE plugin.
+Plain JS typography template for MTE plugin
 
-More information about the project is here:
+More information about the project is located here:
 https://github.com/LLazyEmail/documentation/blob/main/docs/templates/hn/details.md
 
 ---
 
-## Getting started
+## Setup
 
 ```bash
 npm install
 ```
 
-## Scripts
+## Available Commands
 
 | Command | Description |
 |---|---|
-| `npm run build` | Clean and bundle to `dist/` |
-| `npm run dev` | Watch mode bundling |
-| `npm test` | Run Jest tests |
-| `npm run lint` | Run ESLint across all JS files |
-| `npm run lint:fix` | Run ESLint and auto-fix issues |
-| `npm run lint:prettier` | Run Prettier and auto-format `src/` |
+| `npm test` | Run tests with Jest |
+| `npm run lint` | Check code with ESLint |
+| `npm run lint:fix` | Auto-fix ESLint issues |
+| `npm run format` | Format source files with Prettier |
+| `npm run format:check` | Check formatting without writing |
+| `npm run build` | Build all distribution bundles |
+| `npm run dev` | Watch mode build |
 
-## Linting and formatting
+## Project Structure
 
-This project uses [ESLint](https://eslint.org/) (config in `.eslintrc.json`) and
-[Prettier](https://prettier.io/) (config in `.prettierrc`).
-
-Check for lint errors:
-
-```bash
-npm run lint
+```
+src/
+  components/    # Individual typography component functions
+  components.js  # Aggregates all components into a single export
+  config.js      # Shared configuration values
+  index.js       # Package entry point
+tests/
+  index.test.js  # Component unit tests
 ```
 
-Auto-fix lint errors:
+## Components
 
-```bash
-npm run lint:fix
-```
+Each component is a plain function that accepts props and returns an HTML string:
 
-Format source files with Prettier:
-
-```bash
-npm run lint:prettier
-```
-
-Editor settings are defined in `.editorconfig` (2-space indent, LF line endings, UTF-8).
+- `headingComponent` – `<h3>` section heading
+- `titleComponent` – `<h1>` main title
+- `subtitleComponent` – styled `<p>` subtitle
+- `paragraphComponent` – body text wrapper `<div>`
+- `strongComponent` – `<strong>` bold text
+- `italicComponent` – `<i>` italic text
+- `linkComponent` – `<a>` anchor tag
+- `listComponent` – `<ul>` unordered list
+- `listItemComponent` – `<li>` list item with inner `<p>`
+- `imageComponent` – `<img>` inside a centered `<p>`
+- `separatorComponent` – horizontal `***` separator
+- `buttonComponent` – styled `<a>` button link
 
 ---
-
-## References
 
 - https://www.npmjs.com/package/htmlhammer
 - https://www.npmjs.com/package/html-template-tag
