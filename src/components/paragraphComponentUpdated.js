@@ -1,9 +1,10 @@
 import stringifyAttributes from 'stringify-attributes';
+import { IMAGE_STYLE } from '../helpers';
 
 const paragraphComponentUpdated = ({ content, src, altText }) => {
   const attributes = {
     src: src,
-    style: `border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;`,
+    style: IMAGE_STYLE,
     alt: altText,
   };
 

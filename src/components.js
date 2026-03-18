@@ -1,5 +1,6 @@
 import headingComponent from './components/heading';
 import imageComponent from './components/image';
+import imageLinkedComponent from './components/imageLinked';
 import italicComponent from './components/italic';
 import linkComponent from './components/link';
 import listComponent from './components/list';
@@ -14,6 +15,7 @@ import buttonComponent from './components/button2';
 const typographyComponents = {
   headingComponent,
   imageComponent,
+  imageLinkedComponent,
   italicComponent,
   linkComponent,
   listComponent,

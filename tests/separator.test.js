@@ -38,4 +38,38 @@ describe('separatorComponent', () => {
       expect(separatorComponent()).toBe(separatorComponent());
     });
   });
+
+  describe('image mode', () => {
+    test('renders an <img> element when src is provided', () => {
+      const result = separatorComponent({ src: 'https://example.com/sep.png', altText: 'separator' });
+      expect(result).toContain('<img');
+    });
+
+    test('does not show *** when src is provided', () => {
+      const result = separatorComponent({ src: 'https://example.com/sep.png', altText: 'separator' });
+      expect(result).not.toContain('<em>***</em>');
+    });
+
+    test('sets the src attribute on the image', () => {
+      const result = separatorComponent({ src: 'https://example.com/sep.png', altText: 'separator' });
+      expect(result).toContain('src="https://example.com/sep.png"');
+    });
+
+    test('sets the alt attribute on the image', () => {
+      const result = separatorComponent({ src: 'https://example.com/sep.png', altText: 'separator' });
+      expect(result).toContain('alt="separator"');
+    });
+
+    test('applies standard image dimensions in image mode', () => {
+      const result = separatorComponent({ src: 'img.png', altText: 'alt' });
+      expect(result).toContain('width: 220px');
+      expect(result).toContain('height: 134px');
+    });
+
+    test('still centers the image in image mode', () => {
+      const result = separatorComponent({ src: 'img.png', altText: 'alt' });
+      expect(result).toContain('text-align: center');
+    });
+  });
 });
+
