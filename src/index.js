@@ -1,3 +1,3 @@
-import typographyComponents from './components'
+import typographyComponents from './components';
 
 export default typographyComponents;
