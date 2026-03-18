@@ -1,11 +1,12 @@
 import stringifyAttributes from 'stringify-attributes';
+import { LINK_STYLE } from '../helpers';
 
 const buttonComponent = ({ href, content }) => {
   const attributes = {
     class: `mlContentButton`,
     href: href,
     target: `_blank`,
-    style: `mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;`,
+    style: LINK_STYLE,
   };
 
   const attributesStr = stringifyAttributes(attributes);
