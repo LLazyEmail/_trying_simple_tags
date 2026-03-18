@@ -9,6 +9,7 @@ describe('typographyComponents (main module export)', () => {
     const expectedKeys = [
       'headingComponent',
       'imageComponent',
+      'imageLinkedComponent',
       'italicComponent',
       'linkComponent',
       'listComponent',
