@@ -28,8 +28,20 @@ describe('typographyComponents (main module export)', () => {
   });
 
   test('every exported component is a callable function', () => {
-    Object.entries(typographyComponents).forEach(([, component]) => {
-      expect(typeof component).toBe('function');
+    Object.entries(typographyComponents).forEach(([key, component]) => {
+      if (key === 'atoms') {
+        expect(typeof component).toBe('object');
+      } else {
+        expect(typeof component).toBe('function');
+      }
+    });
+  });
+
+  test('atoms namespace exposes all atom components as functions', () => {
+    const atomKeys = ['text', 'link', 'image', 'spacer', 'divider'];
+    atomKeys.forEach((key) => {
+      expect(typographyComponents.atoms).toHaveProperty(key);
+      expect(typeof typographyComponents.atoms[key]).toBe('function');
     });
   });
 

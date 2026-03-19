@@ -12,6 +12,12 @@ import subtitleComponent from './components/subtitle';
 import separatorComponent from './components/separator';
 import buttonComponent from './components/button2';
 
+import atomText from './components/atoms/text';
+import atomLink from './components/atoms/link';
+import atomImage from './components/atoms/image';
+import atomSpacer from './components/atoms/spacer';
+import atomDivider from './components/atoms/divider';
+
 const typographyComponents = {
   headingComponent,
   imageComponent,
@@ -26,6 +32,14 @@ const typographyComponents = {
   subtitleComponent,
   separatorComponent,
   buttonComponent,
+
+  atoms: {
+    text: atomText,
+    link: atomLink,
+    image: atomImage,
+    spacer: atomSpacer,
+    divider: atomDivider,
+  },
 };
 
 export default typographyComponents;
