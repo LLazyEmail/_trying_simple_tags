@@ -37,7 +37,7 @@
     "@babel/plugin-transform-modules-commonjs": "7.19.6",
     "@babel/preset-env": "7.20.2",
     "eslint": "8.28.0",
-    "eslint-plugin-json": "4.0.1",
+    "eslint-plugin-json": "5.0.0",
     "jest": "30.3.0",
     "prettier": "3.8.1",
     "shx": "0.3.4",
