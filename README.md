@@ -20,7 +20,7 @@ npm install
 
 | Command | Description |
 |---|---|
-| `npm test` | Run tests with Jest |
+| `npm test` | Run tests with Jest (native ESM, no Babel) |
 | `npm run lint` | Check code with ESLint |
 | `npm run lint:fix` | Auto-fix ESLint issues |
 | `npm run format` | Format source files with Prettier |
@@ -37,7 +37,7 @@ src/
   config.js      # Shared configuration values
   index.js       # Package entry point
 tests/
-  index.test.js  # Component unit tests
+  *.test.js      # Component unit tests
 ```
 
 ## Components
@@ -59,31 +59,6 @@ Each component is a plain function that accepts props and returns an HTML string
 
 ---
 
-
-- https://www.npmjs.com/package/htmlhammer
-- https://www.npmjs.com/package/html-template-tag
-
-- https://lit.dev/docs/v1/lit-html/introduction/ + https://www.npmjs.com/package/tag-html
-- https://www.npmjs.com/package/common-tags
-
-- https://github.com/teleporthq/teleport-code-generators
-
-
-
-- https://www.npmjs.com/package/@jkob/node-html-renderer
-
-- https://www.npmjs.com/package/premail
-
-
-- https://dev.to/azure/too-hard-too-soft-just-right-rendering-html-with-lit-html-1km8
-
-- https://github.com/runem/lit-analyzer/tree/master/packages/ts-lit-plugin
-
-
-- https://github.com/web-padawan/awesome-lit
-
----
-
 ## Build
 
 The library is bundled with [tsup](https://tsup.egoist.dev/). `npm run build` writes:
@@ -92,4 +67,4 @@ The library is bundled with [tsup](https://tsup.egoist.dev/). `npm run build` wr
 - `dist/index.es.js` — ESM (`module`)
 - `dist/index.iife.js` — browser IIFE (`browser`, global `newsletterLayoutsTypographyPlainJS`)
 
-Babel is kept only for Jest and ESLint. Rollup is no longer used.
+There is no Babel in the toolchain. Jest runs as native ESM.

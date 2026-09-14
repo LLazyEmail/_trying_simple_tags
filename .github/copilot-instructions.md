@@ -6,10 +6,10 @@ This repository is a plain-JavaScript typography component library (`atherdon-ne
 
 ## Technology Stack
 
-- **Language**: JavaScript (ES modules, no TypeScript)
+- **Language**: JavaScript (ES modules, no TypeScript source)
 - **Bundler**: tsup (outputs CJS, ESM, and IIFE bundles)
-- **Testing**: Jest with Babel transform
-- **Linting**: ESLint with `@babel/eslint-parser`
+- **Testing**: Jest with native ESM (`--experimental-vm-modules`), no Babel
+- **Linting**: ESLint default parser (`sourceType: module`)
 - **Formatting**: Prettier
 
 ## Development Workflow
@@ -24,7 +24,7 @@ npm run build        # Build distribution bundles (clean + tsup)
 npm run dev          # Watch mode build
 ```
 
-CI runs `npm run lint` and `npm test` on every push/PR to `main`/`master`.
+CI runs lint, tests, and `npm run build` on every push/PR to `main`/`master`.
 
 ## Repository Structure
 
@@ -35,7 +35,7 @@ src/
   config.js      # Shared configuration values
   index.js       # Package entry point (default export)
 tests/
-  index.test.js  # Jest unit tests for all components
+  *.test.js      # Jest unit tests
 ```
 
 ## Component Conventions
@@ -48,11 +48,7 @@ tests/
 
 ## Testing Conventions
 
-- Tests live in `tests/index.test.js` and use `describe`/`test` blocks.
-- Each component section is organised into nested `describe` blocks:
-  - **HTML structure** – tag presence and order
-  - **styling** – expected inline style values
-  - **content handling** – content is preserved, edge cases don't throw
+- Tests live under `tests/` and use `describe`/`test` blocks.
 - Import components directly from `../src/components/<name>`.
 - Do **not** snapshot-test; assert specific substrings or structure instead.
 - Run `npm test` to verify; tests must pass before merging.
