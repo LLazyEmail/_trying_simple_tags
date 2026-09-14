@@ -7,7 +7,7 @@ This repository is a plain-JavaScript typography component library (`atherdon-ne
 ## Technology Stack
 
 - **Language**: JavaScript (ES modules, no TypeScript)
-- **Bundler**: Rollup (outputs CJS, ES, and IIFE bundles)
+- **Bundler**: tsup (outputs CJS, ESM, and IIFE bundles)
 - **Testing**: Jest with Babel transform
 - **Linting**: ESLint with `@babel/eslint-parser`
 - **Formatting**: Prettier
@@ -20,7 +20,7 @@ npm test             # Run Jest tests
 npm run lint         # Check code with ESLint
 npm run lint:fix     # Auto-fix ESLint issues
 npm run format       # Format source files with Prettier
-npm run build        # Build distribution bundles (clean + rollup)
+npm run build        # Build distribution bundles (clean + tsup)
 npm run dev          # Watch mode build
 ```
 
