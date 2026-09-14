@@ -1,6 +1,6 @@
 node_modules
 dist
-rollup.config.js
+tsup.config.js
 babel.config.js
 # probably later we need to enable it for tests too
 tests/*.js
