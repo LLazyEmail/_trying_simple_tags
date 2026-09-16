@@ -6,6 +6,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.iife.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "browser": "./dist/index.iife.js",
