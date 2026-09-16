@@ -1,6 +1,7 @@
 import stringifyAttributes from 'stringify-attributes';
 import { IMAGE_STYLE } from '../helpers';
 
+/** @type {import('../../types/components').ParagraphUpdatedComponent} */
 const paragraphComponentUpdated = ({ content, src, altText }) => {
   const attributes = {
     src: src,

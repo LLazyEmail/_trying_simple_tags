@@ -6,7 +6,9 @@ import linkComponent from './components/link';
 import listComponent from './components/list';
 import listItemComponent from './components/listItem';
 import titleComponent from './components/mainTitle';
+import mainTitleImageComponent from './components/mainTitleImage';
 import paragraphComponent from './components/paragraph';
+import paragraphComponentUpdated from './components/paragraphComponentUpdated';
 import strongComponent from './components/strong';
 import subtitleComponent from './components/subtitle';
 import separatorComponent from './components/separator';
@@ -28,7 +30,9 @@ const typographyComponents = {
   listComponent,
   listItemComponent,
   titleComponent,
+  mainTitleImageComponent,
   paragraphComponent,
+  paragraphComponentUpdated,
   strongComponent,
   subtitleComponent,
   separatorComponent,
