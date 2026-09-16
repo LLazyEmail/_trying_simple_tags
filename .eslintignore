@@ -1,7 +1,6 @@
 node_modules
 dist
 tsup.config.js
-jest.config.cjs
-jest-esm-resolver.cjs
+vitest.config.ts
 # probably later we need to enable it for tests too
-tests/*.js
+tests/**

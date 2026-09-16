@@ -6,9 +6,9 @@ This repository is a plain-JavaScript typography component library (`atherdon-ne
 
 ## Technology Stack
 
-- **Language**: JavaScript (ES modules, no TypeScript source)
+- **Language**: JavaScript source (ES modules); tests are TypeScript
 - **Bundler**: tsup (outputs CJS, ESM, and IIFE bundles)
-- **Testing**: Jest with native ESM (`--experimental-vm-modules`), no Babel
+- **Testing**: Vitest (`tests/**/*.test.ts`)
 - **Linting**: ESLint default parser (`sourceType: module`)
 - **Formatting**: Prettier
 
@@ -16,7 +16,7 @@ This repository is a plain-JavaScript typography component library (`atherdon-ne
 
 ```bash
 npm install          # Install dependencies
-npm test             # Run Jest tests
+npm test             # Run Vitest tests
 npm run lint         # Check code with ESLint
 npm run lint:fix     # Auto-fix ESLint issues
 npm run format       # Format source files with Prettier
@@ -35,7 +35,7 @@ src/
   config.js      # Shared configuration values
   index.js       # Package entry point (default export)
 tests/
-  *.test.js      # Jest unit tests
+  *.test.ts      # Vitest unit tests
 ```
 
 ## Component Conventions
@@ -48,7 +48,7 @@ tests/
 
 ## Testing Conventions
 
-- Tests live under `tests/` and use `describe`/`test` blocks.
+- Tests live under `tests/` as TypeScript files and use Vitest `describe`/`test` blocks.
 - Import components directly from `../src/components/<name>`.
 - Do **not** snapshot-test; assert specific substrings or structure instead.
 - Run `npm test` to verify; tests must pass before merging.

@@ -21,8 +21,10 @@
     "bundle": "tsup",
     "dev": "tsup --watch",
     "build": "npm run clean && npm run bundle",
-    "prepublishOnly": "npm run clean && npm run build",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js ./tests --passWithNoTests",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
     "clean": "shx rm -rf ./coverage && shx rm -rf ./dist",
     "lint:prettier": "prettier --write src/",
     "lint": "eslint --ext .js . --ignore-path ./.eslintignore --resolve-plugins-relative-to .",
@@ -32,13 +34,14 @@
     "format:check": "prettier --check src/"
   },
   "devDependencies": {
+    "@types/node": "^22.10.0",
     "eslint": "10.10.0",
     "eslint-plugin-json": "5.0.0",
-    "jest": "30.5.1",
     "prettier": "3.9.6",
     "shx": "0.4.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.8"
   },
   "author": "Arthur Tkachenko",
   "license": "MIT",

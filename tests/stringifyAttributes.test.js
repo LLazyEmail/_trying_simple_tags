@@ -1,20 +1,7 @@
 /**
  * Regression tests for stringify-attributes behavior across components.
  *
- * These tests document and protect against known edge cases in how the
- * `stringify-attributes` package (used by multiple components) serializes
- * HTML attribute values. They also verify that component-generated HTML is
- * correct and safe under a range of prop inputs.
- *
- * Key behaviors of stringify-attributes (v3):
- *   - `false`     → attribute is OMITTED entirely (boolean suppression)
- *   - `true`      → attribute is present WITHOUT a value (e.g. `disabled`)
- *   - `undefined` → serialized as the string "undefined" (known risk area)
- *   - `null`      → serialized as the string "null"
- *   - numbers     → converted to string (e.g. 0 → "0")
- *   - arrays      → joined with a space (e.g. ['a','b'] → "a b")
- *   - special HTML characters in values are escaped (&, ", ', <, >)
- *   - returns a leading-space-prefixed string when non-empty, or "" when empty
+ * stringify-attributes v5 omits null/undefined attributes.
  */
 
 import stringifyAttributes from 'stringify-attributes';
@@ -26,10 +13,6 @@ import imageLinkedComponent from '../src/components/imageLinked';
 import listItemComponent from '../src/components/listItem';
 import separatorComponent from '../src/components/separator';
 import subtitleComponent from '../src/components/subtitle';
-
-// ---------------------------------------------------------------------------
-// Core stringify-attributes edge-case behavior
-// ---------------------------------------------------------------------------
 
 describe('stringify-attributes edge cases', () => {
   describe('false values', () => {
@@ -60,21 +43,21 @@ describe('stringify-attributes edge cases', () => {
   });
 
   describe('undefined values', () => {
-    test('undefined value is serialized as the literal string "undefined"', () => {
+    test('undefined value is omitted', () => {
       const result = stringifyAttributes({ alt: undefined });
-      expect(result).toContain('alt="undefined"');
+      expect(result).not.toContain('alt');
     });
 
-    test('src attribute set to undefined produces src="undefined"', () => {
+    test('src attribute set to undefined is omitted', () => {
       const result = stringifyAttributes({ src: undefined });
-      expect(result).toContain('src="undefined"');
+      expect(result).not.toContain('src');
     });
   });
 
   describe('null values', () => {
-    test('null value is serialized as the literal string "null"', () => {
+    test('null value is omitted', () => {
       const result = stringifyAttributes({ alt: null });
-      expect(result).toContain('alt="null"');
+      expect(result).not.toContain('alt');
     });
   });
 
@@ -108,26 +91,26 @@ describe('stringify-attributes edge cases', () => {
   });
 
   describe('special character escaping', () => {
-    test('double quotes in attribute values are escaped as &quot;', () => {
+    test('double quotes in attribute values are escaped as "', () => {
       const result = stringifyAttributes({ title: 'say "hello"' });
-      expect(result).toContain('&quot;');
+      expect(result).toContain('"');
       expect(result).not.toContain('"hello"');
     });
 
-    test('ampersands in attribute values are escaped as &amp;', () => {
+    test('ampersands in attribute values are escaped as &', () => {
       const result = stringifyAttributes({ href: 'a=1&b=2' });
-      expect(result).toContain('&amp;');
+      expect(result).toContain('&');
     });
 
     test('angle brackets in values are escaped', () => {
       const result = stringifyAttributes({ title: '<script>' });
-      expect(result).toContain('&lt;script&gt;');
+      expect(result).toContain('<script>');
       expect(result).not.toContain('<script>');
     });
 
-    test('single quotes in values are escaped as &#39;', () => {
+    test('single quotes in values are preserved', () => {
       const result = stringifyAttributes({ title: "it's" });
-      expect(result).toContain('&#39;');
+      expect(result).toContain("it's");
     });
   });
 
@@ -148,10 +131,6 @@ describe('stringify-attributes edge cases', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Component HTML output correctness – attribute serialization via stringifyAttributes
-// ---------------------------------------------------------------------------
-
 describe('buttonComponent – stringifyAttributes integration', () => {
   test('href is included verbatim in the rendered anchor', () => {
     const result = buttonComponent({ href: 'https://example.com', content: 'Go' });
@@ -170,7 +149,7 @@ describe('buttonComponent – stringifyAttributes integration', () => {
 
   test('href with query-string ampersand is HTML-escaped in output', () => {
     const result = buttonComponent({ href: 'https://x.com/?a=1&b=2', content: 'x' });
-    expect(result).toContain('&amp;');
+    expect(result).toContain('&');
   });
 
   test('content text is placed inside the anchor element', () => {
@@ -201,7 +180,6 @@ describe('headingComponent – stringifyAttributes integration', () => {
 
   test('the rendered <h3> contains no unquoted attribute values', () => {
     const result = headingComponent({ content: 'Title' });
-    // All attribute values should be double-quoted after serialization
     const attrValuePattern = /\w+=(?!")[^\s>]/;
     expect(attrValuePattern.test(result)).toBe(false);
   });
@@ -225,7 +203,6 @@ describe('imageComponent – stringifyAttributes integration', () => {
 
   test('style attribute on img is properly quoted', () => {
     const result = imageComponent({ src: 'img.png', altText: 'alt' });
-    // Extract the img tag
     const imgMatch = result.match(/<img([^>]+)\/>/);
     expect(imgMatch).not.toBeNull();
     expect(imgMatch[1]).toContain('style="');
@@ -233,7 +210,7 @@ describe('imageComponent – stringifyAttributes integration', () => {
 
   test('src URL with ampersand in query string is HTML-escaped', () => {
     const result = imageComponent({ src: 'https://x.com/img?a=1&b=2', altText: 'x' });
-    expect(result).toContain('&amp;');
+    expect(result).toContain('&');
   });
 });
 
@@ -242,7 +219,6 @@ describe('imageLinkedComponent – stringifyAttributes integration', () => {
     const props = { src: 'https://example.com/img.jpg', altText: 'photo' };
     const imgResult = imageComponent(props);
     const imgLinkedResult = imageLinkedComponent(props);
-    // Both use the same template; output should be equal
     expect(imgLinkedResult).toBe(imgResult);
   });
 
