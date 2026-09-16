@@ -1,5 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 
+/** @type {import('../../types/components').HeadingComponent} */
 const headingComponent = ({ content }) => {
   const attributes = {
     class: `mc-toc-title`,

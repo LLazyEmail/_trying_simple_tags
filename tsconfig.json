@@ -7,7 +7,7 @@
     "strict": false,
     "noEmit": true,
     "allowJs": true,
-    "checkJs": false,
+    "checkJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
