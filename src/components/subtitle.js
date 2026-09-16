@@ -1,5 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 
+/** @type {import('../../types/components').SubtitleComponent} */
 const subtitleComponent = ({ content }) => {
   const attributes = {
     dir: `ltr`,

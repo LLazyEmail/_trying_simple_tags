@@ -1,5 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 
+/** @type {import('../../types/components').ImageLinkedComponent} */
 const imageLinkedComponent = ({ src, altText }) => {
   const attributes = {
     'data-file-id': `1041068`,
