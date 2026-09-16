@@ -33,13 +33,17 @@
     "format:check": "prettier --check src/"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^22.10.0",
     "eslint": "10.10.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-json": "^5.0.0",
+    "globals": "^17.12.0",
     "prettier": "3.9.6",
     "shx": "0.4.0",
     "tsup": "^8.3.5",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0",
     "vitest": "^2.1.8"
   },
   "author": "Arthur Tkachenko",
@@ -55,7 +59,6 @@
     "fsevents": "*"
   },
   "dependencies": {
-    "@eslint/js": "^10.0.1",
     "lit-typography": "^0.1.0",
     "stringify-attributes": "^5.0.0"
   }

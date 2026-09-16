@@ -1,40 +1,46 @@
+// eslint.config.js
 import js from '@eslint/js';
-import json from 'eslint-plugin-json';
+import globals from 'globals';
+import jsonPlugin from 'eslint-plugin-json';
+import prettierConfig from 'eslint-config-prettier';
+// import tseslint from 'typescript-eslint'; // uncomment once .ts files land
 
 export default [
   {
-    ignores: [
-      'node_modules/**',
+    ignores: [      'node_modules/**',
       'dist/**',
       'coverage/**',
       'tests/**',
       'tsup.config.js',
       'vitest.config.ts',
-      'package-lock.json',
-    ],
+      'package-lock.json',],
   },
   js.configs.recommended,
   {
-    files: ['src/**/*.js'],
+    files: ['src/**/*.js', 'tests/**/*.js'],
     languageOptions: {
-      ecmaVersion: 'latest',
+      ecmaVersion: 2022,
       sourceType: 'module',
-      globals: {
-        console: 'readonly',
-        process: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
-      },
+      globals: { ...globals.node },
     },
     rules: {
-      'no-unused-vars': 'off',
-      'no-useless-escape': 'off',
-      camelcase: 'warn',
-      'max-len': ['error', { code: 850 }],
+      // carry over any custom rules from your old .eslintrc here
     },
   },
   {
-    files: ['*.json', '.github/**/*.json'],
-    ...json.configs.recommended,
+    files: ['tests/**/*.test.js'],
+    languageOptions: {
+      globals: {         console: 'readonly',
+        process: 'readonly',
+        window: 'readonly',
+        document: 'readonly', }, // swap for vitest globals if you migrate the test runner too
+    },
   },
+  {
+    files: ['**/*.json'],
+    plugins: { json: jsonPlugin },
+    rules: jsonPlugin.configs.recommended.rules,
+  },
+  // ...tseslint.configs.recommended,  // uncomment for TS
+  prettierConfig, // must stay last — turns off stylistic rules that fight Prettier
 ];
