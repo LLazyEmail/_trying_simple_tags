@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 const shared = {
   entry: {
-    index: 'src/index.js',
+    index: 'src/index.ts',
   },
   sourcemap: true,
   minify: false,
