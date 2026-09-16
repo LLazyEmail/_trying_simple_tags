@@ -1,5 +1,9 @@
 import stringifyAttributes from 'stringify-attributes';
 
+/**
+ * @param {import('../../types/components').SeparatorProps} [props]
+ * @returns {import('../../types/components').HtmlString}
+ */
 const separatorComponent = ({ src, altText } = {}) => {
   const attributes = {
     src,
