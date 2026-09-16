@@ -15,5 +15,13 @@
     "isolatedModules": true,
     "types": ["vitest/globals", "node"]
   },
-  "include": ["src", "tests", "vitest.config.ts", "tsup.config.js"]
+  "include": [
+    "src",
+    "tests",
+    "types",
+    "templates",
+    "registry.ts",
+    "vitest.config.ts",
+    "tsup.config.js"
+  ]
 }
