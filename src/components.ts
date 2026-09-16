@@ -1,3 +1,4 @@
+import type { TypographyComponents } from '../../types/components';
 import headingComponent from './components/heading';
 import imageComponent from './components/image';
 import imageLinkedComponent from './components/imageLinked';
@@ -19,7 +20,7 @@ import atomLink from './components/atoms/link';
 import atomImage from './components/atoms/image';
 import atomSpacer from './components/atoms/spacer';
 import atomDivider from './components/atoms/divider';
-import type { TypographyComponents } from '../../types/components';
+
 
 const typographyComponents = {
   headingComponent,
