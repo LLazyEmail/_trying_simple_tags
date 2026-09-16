@@ -1,4 +1,4 @@
-/** @type {import('../../types/components').StrongComponent} */
+import type { StrongComponent } from '../../types/components';
 const strongComponent = ({ content }) => {
   return `<strong style="font-weight: bolder;">${content}</strong>`;
 };

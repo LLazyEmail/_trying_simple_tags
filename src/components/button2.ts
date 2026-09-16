@@ -1,6 +1,5 @@
 import stringifyAttributes from 'stringify-attributes';
-
-/** @type {import('../../types/components').ButtonComponent} */
+import type { ButtonComponent } from '../../types/components';
 const buttonComponent = ({ href, content }) => {
   const attributes = {
     class: `mlContentButton`,

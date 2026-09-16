@@ -1,4 +1,4 @@
-/** @type {import('../../types/components').ItalicComponent} */
+import type { ItalicComponent } from '../../types/components';
 const italicComponent = ({ content }) => {
   return `<i>${content}</i>`;
 };

@@ -1,7 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
-
-/** @type {import('../../types/components').MainTitleImageComponent} */
-const mainTitleImageComponent = ({ src, altText }) => {
+import type { ImageLinkedComponent } from '../../types/components';
+const imageLinkedComponent = ({ src, altText }) => {
   const attributes = {
     'data-file-id': `1041068`,
     src: src,
@@ -18,4 +17,4 @@ const mainTitleImageComponent = ({ src, altText }) => {
     </span></span></p>`;
 };
 
-export default mainTitleImageComponent;
+export default imageLinkedComponent;

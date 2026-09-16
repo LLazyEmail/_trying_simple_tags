@@ -19,8 +19,8 @@ import atomLink from './components/atoms/link';
 import atomImage from './components/atoms/image';
 import atomSpacer from './components/atoms/spacer';
 import atomDivider from './components/atoms/divider';
+import type { TypographyComponents } from '../../types/components';
 
-/** @type {import('../types/components').TypographyComponents} */
 const typographyComponents = {
   headingComponent,
   imageComponent,

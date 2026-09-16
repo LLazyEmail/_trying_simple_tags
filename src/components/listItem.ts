@@ -1,6 +1,5 @@
 import stringifyAttributes from 'stringify-attributes';
-
-/** @type {import('../../types/components').ListItemComponent} */
+import type { ListItemComponent } from '../../types/components';
 const listItemComponent = ({ content }) => {
   const attributes = {
     style: `mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;`,

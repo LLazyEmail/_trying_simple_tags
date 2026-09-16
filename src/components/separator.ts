@@ -1,7 +1,7 @@
 import stringifyAttributes from 'stringify-attributes';
+import type { SeparatorComponent } from '../../types/components';
 
-/** @type {import('../../types/components').SeparatorComponent} */
-const separatorComponent = ({ src, altText } = {}) => {
+const separatorComponent: SeparatorComponent = ({ src, altText } = {}) => {
   const attributes = {
     src,
     style: `border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;`,
