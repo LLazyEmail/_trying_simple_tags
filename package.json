@@ -62,5 +62,9 @@
   "dependencies": {
     "lit-typography": "^0.1.0",
     "stringify-attributes": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LLazyEmail/_trying_simple_tags"
   }
 }
