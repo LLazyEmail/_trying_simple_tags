@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/node": "^22.10.0",
     "eslint": "10.10.0",
-    "eslint-plugin-json": "5.0.0",
+    "eslint-plugin-json": "^5.0.0",
     "prettier": "3.9.6",
     "shx": "0.4.0",
     "tsup": "^8.3.5",
@@ -55,6 +55,7 @@
     "fsevents": "*"
   },
   "dependencies": {
+    "@eslint/js": "^10.0.1",
     "lit-typography": "^0.1.0",
     "stringify-attributes": "^5.0.0"
   }
