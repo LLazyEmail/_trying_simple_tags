@@ -14,9 +14,9 @@ const shared = {
 export default defineConfig([
   {
     ...shared,
-    format: ['cjs', 'esm'],
+    format: ['cjs', 'esm', 'iife'],
     clean: true,
-    dts: false,
+    dts: true,
     platform: 'neutral',
     outExtension({ format }) {
       return {
