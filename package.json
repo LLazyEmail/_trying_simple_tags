@@ -1,6 +1,6 @@
 {
   "name": "atherdon-newsletter-js-layouts-typography",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "im trying to separate part of our code",
   "type": "module",
   "main": "dist/index.cjs.js",
