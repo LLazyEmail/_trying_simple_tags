@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`typography components — output baseline (pre-TS-conversion) > buttonComponent 1`] = `"<a  class="mlContentButton" href="https://example.com" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;" >Read more</a>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > headingComponent 1`] = `
+"<h3  class="mc-toc-title" dir="ltr" style="text-align: center;display: block;margin: 0;padding: 0;color: #111111;font-family: 'Merriweather Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;" >
+    <span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif">
+    <span style="font-size:18px">Hello World</span></span>
+  </h3>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > imageComponent 1`] = `
+"<p dir="ltr" 
+    style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;">    
+        <img  data-file-id="1041068" src="https://example.com/img.png" style="border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" alt="an image" />
+    </a>
+    </span></span></p>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > imageLinkedComponent 1`] = `
+"<p dir="ltr" 
+    style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;">    
+        <img  data-file-id="1041068" src="https://example.com/img.png" style="border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" alt="an image" />
+    </a>
+    </span></span></p>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > italicComponent 1`] = `"<i>italic text</i>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > linkComponent 1`] = `"<a href="https://example.com" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;">Click here</a>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > listComponent wrapping two listItemComponent outputs 1`] = `"<ul dir="ltr"><li  style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" ><p  dir="ltr" role="presentation" style="line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;" >Item one</p></li><li  style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" ><p  dir="ltr" role="presentation" style="line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;" >Item two</p></li></ul>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > listItemComponent 1`] = `"<li  style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" ><p  dir="ltr" role="presentation" style="line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;" >Item one</p></li>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > paragraphComponent 1`] = `
+"<div dir="ltr" style="text-align: justify;">
+    <span style="font-size:16px"><span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif">
+    Some body text.
+    </span></span></div>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > separatorComponent — no args (fallback ***) 1`] = `
+"<div dir="ltr" style="text-align: center;">
+    <span style="font-size:16px"><span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif"><em>***</em></span></span>
+    </div>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > separatorComponent — with src 1`] = `
+"<div dir="ltr" style="text-align: center;">
+    <span style="font-size:16px"><span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif"><img  src="https://example.com/img.png" style="border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" alt="divider" /></span></span>
+    </div>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > strongComponent 1`] = `"<strong style="font-weight: bolder;">bold text</strong>"`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > subtitleComponent 1`] = `
+"<p  dir="ltr" style="text-align: left;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;" >
+        <span style="font-size:17px">
+        <span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif">
+            <strong id="dofc6f2">A subtitle</strong>
+        </span></span>
+    </p>"
+`;
+
+exports[`typography components — output baseline (pre-TS-conversion) > titleComponent 1`] = `"<h1 class="mc-toc-title" dir="ltr" style="text-align: center;display: block;margin: 0;padding: 0;color: #111111;font-family: 'Merriweather Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;"><span style="font-family:trebuchet ms,lucida grande,lucida sans unicode,lucida sans,tahoma,sans-serif"><span style="font-size:30px">Main Title</span></span></h1>"`;
