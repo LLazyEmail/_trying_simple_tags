@@ -1,21 +1,10 @@
-import stringifyAttributes from 'stringify-attributes';
 import type { ListItemComponent } from '../../types/components';
-const listItemComponent = ({ content }) => {
-  const attributes = {
-    style: `mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;`,
-  };
+import { baseListItem } from './base/listItem';
+import { listItemLayout } from './layouts/default';
 
-  const attributesStr = stringifyAttributes(attributes);
-
-  const attributes2 = {
-    dir: `ltr`,
-    role: `presentation`,
-    style: `line-height: 125%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;text-align: left;`,
-  };
-
-  const attributesStr2 = stringifyAttributes(attributes2);
-
-  return `<li ${attributesStr} ><p ${attributesStr2} >${content}</p></li>`;
+const listItemComponent: ListItemComponent = ({ content }) => {
+  const data = baseListItem({ content });
+  return listItemLayout(data);
 };
 
 export default listItemComponent;

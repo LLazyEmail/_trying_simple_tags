@@ -61,7 +61,11 @@ describe('Visual Review - Rendered Components', () => {
 
     console.log('\n📌 PARAGRAPH COMPONENT UPDATED');
     console.log(separator);
-    const paragraphUpdatedHtml = paragraphComponentUpdated({ content: 'Updated paragraph text.' });
+    const paragraphUpdatedHtml = paragraphComponentUpdated({
+      content: 'Updated paragraph text.',
+      src: 'https://example.com/paragraph-image.png',
+      altText: 'paragraph image',
+    });
     console.log(paragraphUpdatedHtml);
     console.log(separator);
 
@@ -170,7 +174,7 @@ describe('Visual Review - Rendered Components', () => {
     console.log(separator);
     const atomImageHtml = atomImage({
       src: 'https://example.com/atom-image.png',
-      altText: 'atom image',
+      alt: 'atom image',
     });
     console.log(atomImageHtml);
     console.log(separator);

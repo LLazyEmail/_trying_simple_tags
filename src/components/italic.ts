@@ -1,6 +1,10 @@
 import type { ItalicComponent } from '../../types/components';
-const italicComponent = ({ content }) => {
-  return `<i>${content}</i>`;
+import { baseItalic } from './base/italic';
+import { italicLayout } from './layouts/default';
+
+const italicComponent: ItalicComponent = ({ content }) => {
+  const data = baseItalic({ content });
+  return italicLayout(data);
 };
 
 export default italicComponent;
