@@ -1,6 +1,6 @@
-# Publish markdown-regex to npm when a GitHub Release is published.
+# Publish @llazyemail/hn-typography-components to GitHub Packages when a GitHub Release is published.
 
-name: Publish to npm
+name: Publish to GitHub Packages
 
 on:
   release:
@@ -14,7 +14,7 @@ on:
         default: false
 
 concurrency:
-  group: npm-publish
+  group: github-packages-publish
   cancel-in-progress: false
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
-      id-token: write
+      packages: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -32,13 +32,14 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://npm.pkg.github.com/
+          scope: '@llazyemail'
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run build
       - run: npm test
       - run: npm pack --dry-run
-      - name: Publish to npm
+      - name: Publish to GitHub Packages
         if: ${{ github.event_name == 'release' || inputs.dry_run != true }}
-        run: npm publish --access public --provenance
+        run: npm publish

@@ -1,5 +1,5 @@
 {
-  "name": "atherdon-newsletter-js-layouts-typography",
+  "name": "@llazyemail/hn-typography-components",
   "version": "4.0.2",
   "description": "im trying to separate part of our code",
   "type": "module",
@@ -55,7 +55,7 @@
     "publishDir": "dist"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "optionalDependencies": {
     "fsevents": "*"
