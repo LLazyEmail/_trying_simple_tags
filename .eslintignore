@@ -1,6 +1,0 @@
-node_modules
-dist
-tsup.config.js
-vitest.config.ts
-# probably later we need to enable it for tests too
-tests/**
