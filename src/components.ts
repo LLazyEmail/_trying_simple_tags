@@ -1,4 +1,3 @@
-import type { TypographyComponents } from '../../types/components';
 import headingComponent from './components/heading';
 import imageComponent from './components/image';
 import imageLinkedComponent from './components/imageLinked';

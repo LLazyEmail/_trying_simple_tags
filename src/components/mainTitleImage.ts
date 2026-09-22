@@ -1,6 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 import type { MainTitleImageComponent } from '../../types/components';
-const mainTitleImageComponent = ({ src, altText }) => {
+const mainTitleImageComponent: MainTitleImageComponent = ({ src, altText }) => {
   const attributes = {
     'data-file-id': `1041068`,
     src: src,

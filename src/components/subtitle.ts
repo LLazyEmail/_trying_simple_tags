@@ -1,6 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 import type { SubtitleComponent } from '../../types/components';
-const subtitleComponent = ({ content }) => {
+const subtitleComponent: SubtitleComponent = ({ content }) => {
   const attributes = {
     dir: `ltr`,
     style: `text-align: left;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;`,
