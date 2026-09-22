@@ -3,21 +3,24 @@ import js from '@eslint/js';
 import globals from 'globals';
 import jsonPlugin from 'eslint-plugin-json';
 import prettierConfig from 'eslint-config-prettier';
-// import tseslint from 'typescript-eslint'; // uncomment once .ts files land
+import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: [      'node_modules/**',
+    ignores: [
+      'node_modules/**',
       'dist/**',
       'coverage/**',
       'tests/**',
       'tsup.config.js',
       'vitest.config.ts',
-      'package-lock.json',],
+      'package-lock.json',
+    ],
   },
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    files: ['src/**/*.js', 'tests/**/*.js'],
+    files: ['src/**/*.js', 'src/**/*.ts', 'tests/**/*.js', 'tests/**/*.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -28,12 +31,14 @@ export default [
     },
   },
   {
-    files: ['tests/**/*.test.js'],
+    files: ['tests/**/*.test.js', 'tests/**/*.test.ts'],
     languageOptions: {
-      globals: {         console: 'readonly',
+      globals: {
+        console: 'readonly',
         process: 'readonly',
         window: 'readonly',
-        document: 'readonly', }, // swap for vitest globals if you migrate the test runner too
+        document: 'readonly',
+      }, // swap for vitest globals if you migrate the test runner too
     },
   },
   {
@@ -41,6 +46,5 @@ export default [
     plugins: { json: jsonPlugin },
     rules: jsonPlugin.configs.recommended.rules,
   },
-  // ...tseslint.configs.recommended,  // uncomment for TS
   prettierConfig, // must stay last — turns off stylistic rules that fight Prettier
 ];
