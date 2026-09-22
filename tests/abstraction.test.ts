@@ -51,7 +51,7 @@ describe('Abstraction Layer - Custom Layouts', () => {
   });
 
   test('Base components return data objects', () => {
-    const { baseItalic, baseLink, baseParagraph } = require('../src/components/base');
+    const { baseItalic, baseLink, baseParagraph } = require('../src/components/base/index');
 
     const italicData = baseItalic({ content: 'test' });
     expect(italicData).toEqual({ type: 'italic', content: 'test' });
