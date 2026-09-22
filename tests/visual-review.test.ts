@@ -14,11 +14,6 @@ import imageComponent from '../src/components/image';
 import imageLinkedComponent from '../src/components/imageLinked';
 import mainTitleImageComponent from '../src/components/mainTitleImage';
 import paragraphComponentUpdated from '../src/components/paragraphComponentUpdated';
-import atomText from '../src/components/atoms/text';
-import atomLink from '../src/components/atoms/link';
-import atomImage from '../src/components/atoms/image';
-import atomSpacer from '../src/components/atoms/spacer';
-import atomDivider from '../src/components/atoms/divider';
 
 describe('Visual Review - Rendered Components', () => {
   const separator = '='.repeat(80);
@@ -150,45 +145,6 @@ describe('Visual Review - Rendered Components', () => {
       altText: 'title image',
     });
     console.log(mainTitleImageHtml);
-    console.log(separator);
-
-    // Atom Components
-    console.log('\n');
-    console.log('━'.repeat(80));
-    console.log('ATOM COMPONENTS');
-    console.log('━'.repeat(80));
-
-    console.log('\n📌 ATOM TEXT');
-    console.log(separator);
-    const atomTextHtml = atomText({ content: 'Atom text content' });
-    console.log(atomTextHtml);
-    console.log(separator);
-
-    console.log('\n📌 ATOM LINK');
-    console.log(separator);
-    const atomLinkHtml = atomLink({ href: 'https://example.com', content: 'Atom link' });
-    console.log(atomLinkHtml);
-    console.log(separator);
-
-    console.log('\n📌 ATOM IMAGE');
-    console.log(separator);
-    const atomImageHtml = atomImage({
-      src: 'https://example.com/atom-image.png',
-      alt: 'atom image',
-    });
-    console.log(atomImageHtml);
-    console.log(separator);
-
-    console.log('\n📌 ATOM SPACER');
-    console.log(separator);
-    const atomSpacerHtml = atomSpacer();
-    console.log(atomSpacerHtml);
-    console.log(separator);
-
-    console.log('\n📌 ATOM DIVIDER');
-    console.log(separator);
-    const atomDividerHtml = atomDivider();
-    console.log(atomDividerHtml);
     console.log(separator);
 
     console.log('\n');
