@@ -2,6 +2,7 @@
 import { createComponents } from '../src/components/factory';
 import * as defaultLayouts from '../src/components/layouts/default';
 import * as minimalLayouts from '../src/components/layouts/minimal';
+import { baseItalic, baseLink, baseParagraph } from '../src/components/base';
 
 describe('Abstraction Layer - Custom Layouts', () => {
   test('Default layouts (original email styles)', () => {
@@ -51,8 +52,6 @@ describe('Abstraction Layer - Custom Layouts', () => {
   });
 
   test('Base components return data objects', () => {
-    const { baseItalic, baseLink, baseParagraph } = require('../src/components/base/index');
-
     const italicData = baseItalic({ content: 'test' });
     expect(italicData).toEqual({ type: 'italic', content: 'test' });
 
