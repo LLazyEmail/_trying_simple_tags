@@ -1,14 +1,14 @@
-# Publish @llazyemail/hn-typography-components to GitHub Packages when a GitHub Release is published.
+# Build main, create a GitHub Release for the package version, and publish to GitHub Packages.
 
 name: Publish to GitHub Packages
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Pack only (do not publish)'
+        description: 'Pack only (do not release or publish)'
         required: false
         type: boolean
         default: false
@@ -19,16 +19,16 @@ concurrency:
 
 jobs:
   publish:
-    name: Build, test, and publish
+    name: Release and publish
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
       - uses: actions/checkout@v7
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 24
@@ -40,6 +40,30 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm pack --dry-run
+      - name: Create GitHub release for this version
+        if: ${{ github.event_name == 'push' || inputs.dry_run != true }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          TAG="v${VERSION}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release ${TAG} already exists"
+          else
+            gh release create "$TAG" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --target main \
+              --title "${TAG}" \
+              --notes "Release ${TAG} of @llazyemail/simple-tags"
+          fi
       - name: Publish to GitHub Packages
-        if: ${{ github.event_name == 'release' || inputs.dry_run != true }}
-        run: npm publish
+        if: ${{ github.event_name == 'push' || inputs.dry_run != true }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "@llazyemail/simple-tags@${VERSION}" version >/dev/null 2>&1; then
+            echo "Version ${VERSION} is already published"
+          else
+            npm publish
+          fi
