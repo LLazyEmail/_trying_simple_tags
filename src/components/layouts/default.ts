@@ -1,5 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
-import { EMAIL_CLIENT_STYLES, LINK_STYLE, IMAGE_STYLE } from '../../helpers';
+import { EMAIL_CLIENT_STYLES, LINK_STYLE } from '../../helpers';
+import { renderEmailImage, wrapEmailImage } from '../image';
 
 /**
  * Default layout functions for rendering base components
@@ -47,21 +48,9 @@ export const strongLayout = (data: { content: string }): string => {
   return `<strong style="font-weight: bolder;">${data.content}</strong>`;
 };
 
+/** Image layout renders an image atom only. Linked images belong to imageLinked. */
 export const imageLayout = (data: { src: string; altText: string }): string => {
-  const attributes = {
-    'data-file-id': `1041068`,
-    src: data.src,
-    style: IMAGE_STYLE,
-    alt: data.altText,
-  };
-
-  const attributesStr = stringifyAttributes(attributes);
-
-  return `<p dir="ltr" 
-    style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;${EMAIL_CLIENT_STYLES}color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="${LINK_STYLE}">    
-        <img ${attributesStr} />
-    </a>
-    </span></span></p>`;
+  return wrapEmailImage(renderEmailImage(data));
 };
 
 export const headingLayout = (data: { content: string }): string => {

@@ -215,11 +215,13 @@ describe('imageComponent – stringifyAttributes integration', () => {
 });
 
 describe('imageLinkedComponent – stringifyAttributes integration', () => {
-  test('produces identical structure to imageComponent for same inputs', () => {
+  test('wraps the image atom in an anchor and is not identical to imageComponent', () => {
     const props = { src: 'https://example.com/img.jpg', altText: 'photo' };
     const imgResult = imageComponent(props);
     const imgLinkedResult = imageLinkedComponent(props);
-    expect(imgLinkedResult).toBe(imgResult);
+    expect(imgLinkedResult).not.toBe(imgResult);
+    expect(imgLinkedResult).toContain('<a ');
+    expect(imgLinkedResult).toContain(imgResult.match(/<img[^>]+\/>/)[0]);
   });
 
   test('alt attribute is set from altText prop', () => {

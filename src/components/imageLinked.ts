@@ -1,20 +1,29 @@
-import stringifyAttributes from 'stringify-attributes';
 import type { ImageLinkedComponent } from '../../types/components';
-const imageLinkedComponent: ImageLinkedComponent = ({ src, altText }) => {
-  const attributes = {
-    'data-file-id': `1041068`,
-    src: src,
-    style: `border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;`,
-    alt: altText,
-  };
+import link from './atoms/link';
+import { LINK_STYLE } from '../helpers';
+import { renderEmailImage, wrapEmailImage } from './image';
 
-  const attributesStr = stringifyAttributes(attributes);
+const escapeAttr = (value: string) =>
+  value
+    .replace(/&/g, '&')
+    .replace(/"/g, '"')
+    .replace(/</g, '<')
+    .replace(/>/g, '>');
 
-  return `<p dir="ltr" 
-    style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #111111;font-weight: bold;text-decoration: underline;">    
-        <img ${attributesStr} />
-    </a>
-    </span></span></p>`;
+/**
+ * Linked image: the link atom is the anchor wrapper around the image atom.
+ * `href` defaults to the `{href}` placeholder used by newsletter templates.
+ */
+const imageLinkedComponent: ImageLinkedComponent = ({ src, altText, href = '{href}' }) => {
+  const img = renderEmailImage({ src, altText });
+  const anchor = link({
+    href: escapeAttr(href),
+    target: '_blank',
+    content: img,
+    style: LINK_STYLE,
+  });
+
+  return wrapEmailImage(anchor);
 };
 
 export default imageLinkedComponent;
