@@ -108,6 +108,8 @@ export type ButtonComponent = TypographyComponent<ButtonProps>;
 
 // ---------------------------------------------------------------------------
 // image.js — imageComponent  &  imageLinked.js — imageLinkedComponent
+// imageComponent renders an image atom. imageLinkedComponent wraps that
+// image in the link atom.
 // ---------------------------------------------------------------------------
 export interface ImageProps {
   src: string;
@@ -118,6 +120,8 @@ export type ImageComponent = TypographyComponent<ImageProps>;
 export interface ImageLinkedProps {
   src: string;
   altText?: string;
+  /** Destination of the anchor wrapping the image. Defaults to `{href}`. */
+  href?: string;
 }
 export type ImageLinkedComponent = TypographyComponent<ImageLinkedProps>;
 
