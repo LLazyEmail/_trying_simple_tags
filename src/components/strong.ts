@@ -1,10 +1,7 @@
 import type { StrongComponent } from '../../types/components';
-import { baseStrong } from './base/strong';
-import { strongLayout } from './layouts/default';
+import text from './atoms/text';
 
-const strongComponent: StrongComponent = ({ content }) => {
-  const data = baseStrong({ content });
-  return strongLayout(data);
-};
+const strongComponent: StrongComponent = ({ content }) =>
+  text({ tag: 'strong', style: 'font-weight: bolder;', content });
 
 export default strongComponent;

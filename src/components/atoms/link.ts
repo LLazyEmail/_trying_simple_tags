@@ -19,8 +19,9 @@ const link = ({
 }: LinkProps = {}) => {
   const classAttr = className ? ` class="${className}"` : '';
   const styleAttr = style ? ` style="${style}"` : '';
+  const relAttr = rel ? ` rel="${rel}"` : '';
   const extraAttr = attributes ? ` ${attributes}` : '';
-  return `<a href="${href}" target="${target}" rel="${rel}"${classAttr}${styleAttr}${extraAttr}>${content}</a>`;
+  return `<a href="${href}" target="${target}"${relAttr}${classAttr}${styleAttr}${extraAttr}>${content}</a>`;
 };
 
 export default link;

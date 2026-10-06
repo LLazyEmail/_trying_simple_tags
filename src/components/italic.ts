@@ -1,10 +1,6 @@
 import type { ItalicComponent } from '../../types/components';
-import { baseItalic } from './base/italic';
-import { italicLayout } from './layouts/default';
+import text from './atoms/text';
 
-const italicComponent: ItalicComponent = ({ content }) => {
-  const data = baseItalic({ content });
-  return italicLayout(data);
-};
+const italicComponent: ItalicComponent = ({ content }) => text({ tag: 'i', content });
 
 export default italicComponent;
