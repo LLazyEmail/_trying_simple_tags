@@ -1,4 +1,5 @@
 import imageLinkedComponent from '../src/components/imageLinked';
+import imageComponent from '../src/components/image';
 
 describe('imageLinkedComponent', () => {
   describe('HTML structure', () => {
@@ -18,9 +19,18 @@ describe('imageLinkedComponent', () => {
     });
 
     test('image is wrapped in an anchor element', () => {
-      const result = imageLinkedComponent({ src: 'img.png', altText: 'alt' });
-      expect(result).toContain('<a ');
-      expect(result).toContain('</a>');
+      const result = imageLinkedComponent({ src: 'img.png', altText: 'alt', href: 'https://example.com' });
+      const anchorOpen = result.indexOf('<a ');
+      const img = result.indexOf('<img');
+      const anchorClose = result.indexOf('</a>');
+      expect(anchorOpen).toBeGreaterThan(-1);
+      expect(img).toBeGreaterThan(anchorOpen);
+      expect(anchorClose).toBeGreaterThan(img);
+    });
+
+    test('is not the same markup as the unlinked image component', () => {
+      const props = { src: 'img.png', altText: 'alt' };
+      expect(imageLinkedComponent(props)).not.toBe(imageComponent(props));
     });
   });
 
@@ -53,6 +63,15 @@ describe('imageLinkedComponent', () => {
     test('opens the image link in a new tab', () => {
       const result = imageLinkedComponent({ src: 'img.png', altText: 'alt' });
       expect(result).toContain('target="_blank"');
+    });
+
+    test('uses the provided href on the anchor', () => {
+      const result = imageLinkedComponent({
+        src: 'img.png',
+        altText: 'alt',
+        href: 'https://example.com/story',
+      });
+      expect(result).toContain('href="https://example.com/story"');
     });
   });
 
