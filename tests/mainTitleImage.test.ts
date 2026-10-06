@@ -18,10 +18,11 @@ describe('mainTitleImageComponent', () => {
       expect(result).toContain('</p>');
     });
 
-    test('image is wrapped in an anchor element', () => {
+    test('renders an image and does not wrap it in an anchor', () => {
       const result = mainTitleImageComponent({ src: 'img.png', altText: 'alt' });
-      expect(result).toContain('<a ');
-      expect(result).toContain('</a>');
+      expect(result).toContain('<img');
+      expect(result).not.toContain('<a ');
+      expect(result).not.toContain('</a>');
     });
   });
 
