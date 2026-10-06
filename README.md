@@ -65,3 +65,10 @@ Bundled with [tsup](https://tsup.egoist.dev/). `npm run build` writes:
 - `dist/index.iife.js` — browser IIFE (`browser`, global `newsletterLayoutsTypographyPlainJS`)
 
 Tests run with Vitest. There is no Jest or Babel in the toolchain.
+
+Atom,Markup,Props
+text,"any tag, default p","content, tag, style, className, attributes"
+link,<a>,"href, content, target, rel, style, className, attributes"
+image,<img>,"src, alt, width, height, style, className, attributes"
+spacer,fixed-height <div>&nbsp;</div>,"size, attributes"
+divider,<hr>,"color, thickness, margin, attributes"
