@@ -1,10 +1,14 @@
 import type { LinkComponent } from '../../types/components';
-import { baseLink } from './base/link';
-import { linkLayout } from './layouts/default';
+import link from './atoms/link';
+import { LINK_STYLE } from '../helpers';
 
-const linkComponent: LinkComponent = ({ href, content }) => {
-  const data = baseLink({ href, content });
-  return linkLayout(data);
-};
+const linkComponent: LinkComponent = ({ href, content }) =>
+  link({
+    href,
+    content,
+    target: '_blank',
+    rel: '',
+    style: LINK_STYLE,
+  });
 
 export default linkComponent;

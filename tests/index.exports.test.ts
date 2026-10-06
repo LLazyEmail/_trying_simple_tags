@@ -58,3 +58,15 @@ describe('typographyComponents (main module export)', () => {
     );
   });
 });
+
+import { atoms, text, link, image, spacer, divider } from '../src/index';
+
+describe('named atom exports', () => {
+  test('re-exports every atom as a function', () => {
+    expect(text).toBe(atoms.text);
+    expect(link).toBe(atoms.link);
+    expect(image).toBe(atoms.image);
+    expect(spacer).toBe(atoms.spacer);
+    expect(divider).toBe(atoms.divider);
+  });
+});

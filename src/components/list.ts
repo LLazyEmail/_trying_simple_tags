@@ -1,10 +1,7 @@
 import type { ListComponent } from '../../types/components';
-import { baseList } from './base/list';
-import { listLayout } from './layouts/default';
+import text from './atoms/text';
 
-const listComponent: ListComponent = ({ content }) => {
-  const data = baseList({ content });
-  return listLayout(data);
-};
+const listComponent: ListComponent = ({ content }) =>
+  text({ tag: 'ul', attributes: 'dir="ltr"', content });
 
 export default listComponent;
