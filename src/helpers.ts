@@ -18,36 +18,3 @@ export const LINK_STYLE = `${EMAIL_CLIENT_STYLES}color: #111111;font-weight: bol
  */
 export const IMAGE_STYLE =
   'border: 0px initial;width: 220px;height: 134px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;';
-
-/**
- * Builds the standard stringified HTML attributes string for an email image element.
- * @param {string} src - Image source URL.
- * @param {string} altText - Image alt text.
- * @returns {string} Stringified HTML attributes.
- */
-export const buildImageAttributes = (src: string, altText?: string) =>
-  stringifyAttributes({
-    'data-file-id': '1041068',
-    src,
-    style: IMAGE_STYLE,
-    alt: altText,
-  });
-
-/**
- * Wraps an <img> HTML string in the standard paragraph/span/anchor wrapper
- * used for linked email images.
- *
- * Note: the anchor `href` contains the literal placeholder `{href}` that was
- * present in the original component templates. Consumers are expected to
- * perform their own string replacement on the returned HTML if a real URL
- * is needed (e.g. `result.replace('{href}', actualUrl)`).
- *
- * @param {string} imgHtml - The <img> element HTML string.
- * @returns {string} Full paragraph-wrapped image HTML.
- */
-export const buildImageWrapper = (imgHtml: string) =>
-  `<p dir="ltr" 
-    style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;${EMAIL_CLIENT_STYLES}color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="${LINK_STYLE}">    
-        ${imgHtml}
-    </a>
-    </span></span></p>`;
