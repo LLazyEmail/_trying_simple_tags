@@ -133,7 +133,10 @@ describe('stringify-attributes edge cases', () => {
 
 describe('buttonComponent – stringifyAttributes integration', () => {
   test('href is included verbatim in the rendered anchor', () => {
-    const result = buttonComponent({ href: 'https://example.com', content: 'Go' });
+    const result = buttonComponent({
+      href: 'https://example.com',
+      content: 'Go',
+    });
     expect(result).toContain('href="https://example.com"');
   });
 
@@ -148,7 +151,10 @@ describe('buttonComponent – stringifyAttributes integration', () => {
   });
 
   test('href with query-string ampersand is HTML-escaped in output', () => {
-    const result = buttonComponent({ href: 'https://x.com/?a=1&b=2', content: 'x' });
+    const result = buttonComponent({
+      href: 'https://x.com/?a=1&b=2',
+      content: 'x',
+    });
     expect(result).toContain('&');
   });
 
@@ -187,12 +193,18 @@ describe('headingComponent – stringifyAttributes integration', () => {
 
 describe('imageComponent – stringifyAttributes integration', () => {
   test('src attribute value is correctly set', () => {
-    const result = imageComponent({ src: 'https://cdn.example.com/img.jpg', altText: 'hero' });
+    const result = imageComponent({
+      src: 'https://cdn.example.com/img.jpg',
+      altText: 'hero',
+    });
     expect(result).toContain('src="https://cdn.example.com/img.jpg"');
   });
 
   test('alt attribute value is correctly set', () => {
-    const result = imageComponent({ src: 'img.png', altText: 'Newsletter banner' });
+    const result = imageComponent({
+      src: 'img.png',
+      altText: 'Newsletter banner',
+    });
     expect(result).toContain('alt="Newsletter banner"');
   });
 
@@ -209,7 +221,10 @@ describe('imageComponent – stringifyAttributes integration', () => {
   });
 
   test('src URL with ampersand in query string is HTML-escaped', () => {
-    const result = imageComponent({ src: 'https://x.com/img?a=1&b=2', altText: 'x' });
+    const result = imageComponent({
+      src: 'https://x.com/img?a=1&b=2',
+      altText: 'x',
+    });
     expect(result).toContain('&');
   });
 });
@@ -225,7 +240,10 @@ describe('imageLinkedComponent – stringifyAttributes integration', () => {
   });
 
   test('alt attribute is set from altText prop', () => {
-    const result = imageLinkedComponent({ src: 'img.png', altText: 'linked image' });
+    const result = imageLinkedComponent({
+      src: 'img.png',
+      altText: 'linked image',
+    });
     expect(result).toContain('alt="linked image"');
   });
 });
@@ -250,7 +268,10 @@ describe('listItemComponent – stringifyAttributes integration', () => {
 
 describe('separatorComponent – stringifyAttributes integration', () => {
   test('image mode: src attribute is correctly set', () => {
-    const result = separatorComponent({ src: 'https://example.com/sep.png', altText: 'sep' });
+    const result = separatorComponent({
+      src: 'https://example.com/sep.png',
+      altText: 'sep',
+    });
     expect(result).toContain('src="https://example.com/sep.png"');
   });
 

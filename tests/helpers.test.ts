@@ -87,7 +87,10 @@ describe('helpers', () => {
     });
 
     test('includes the provided src attribute', () => {
-      const result = buildImageAttributes('https://example.com/photo.jpg', 'photo');
+      const result = buildImageAttributes(
+        'https://example.com/photo.jpg',
+        'photo',
+      );
       expect(result).toContain('src="https://example.com/photo.jpg"');
     });
 

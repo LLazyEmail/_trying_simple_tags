@@ -1,17 +1,14 @@
 As you can see, proper **[data analytics](https://hackernoon.com/data-analytics-is-a-journey-p4k3ugj)**
 
+- A standard .TECH domain for 3 years
 
-*   A standard .TECH domain for 3 years 
+  - Search for your domain [here](https://get.tech/build-the-future)
+  - Use this coupon code **<xxxxxx>** during checkout
 
-    *   Search for your domain [here](https://get.tech/build-the-future)
-    *   Use this coupon code **<xxxxxx>** during checkout
+** I AM SO BOLD and _ME TOO_ **
 
+**_YEP_**
 
-** I AM SO BOLD and _ME TOO_ **    
+_**yy**_
 
-**_YEP_**    
-
-***yy***
-   
-   
 ## [Linkedin page of LLazyEmail](https://www.linkedin.com/company/llazyemail/)

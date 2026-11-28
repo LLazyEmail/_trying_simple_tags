@@ -9,7 +9,6 @@
 - Necessity is the mother of all invention... (29:32)
 - No gods no masters — down with regulation! (32:56)
 
-
 ---
 
 - Artwork.
@@ -17,6 +16,5 @@
 - Music.
 - Collectibles
 - **Tokenized real-world assets**, from vehicles and gold to designer sneakers.
-
 
 ## [Linkedin page of LLazyEmail](https://www.linkedin.com/company/llazyemail/)

@@ -3,8 +3,28 @@
  * This demonstrates how to use the same base components with different layouts
  */
 
-import { baseItalic, baseLink, baseList, baseListItem, baseParagraph, baseStrong, baseImage, baseHeading, baseTitle } from './base';
-import type { BaseItalicProps, BaseLinkProps, BaseListProps, BaseListItemProps, BaseParagraphProps, BaseStrongProps, BaseImageProps, BaseHeadingProps, BaseTitleProps } from './base';
+import {
+  baseItalic,
+  baseLink,
+  baseList,
+  baseListItem,
+  baseParagraph,
+  baseStrong,
+  baseImage,
+  baseHeading,
+  baseTitle,
+} from './base';
+import type {
+  BaseItalicProps,
+  BaseLinkProps,
+  BaseListProps,
+  BaseListItemProps,
+  BaseParagraphProps,
+  BaseStrongProps,
+  BaseImageProps,
+  BaseHeadingProps,
+  BaseTitleProps,
+} from './base';
 
 export interface Layouts {
   italicLayout: (data: { content: string }) => string;

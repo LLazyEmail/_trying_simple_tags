@@ -34,7 +34,9 @@ describe('italicComponent', () => {
     });
 
     test('passes through nested HTML content', () => {
-      const result = italicComponent({ content: '<strong>bold italic</strong>' });
+      const result = italicComponent({
+        content: '<strong>bold italic</strong>',
+      });
       expect(result).toContain('<strong>bold italic</strong>');
     });
   });

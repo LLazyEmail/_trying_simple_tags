@@ -10,9 +10,14 @@ const IMAGE_PARAGRAPH_STYLE = `text-align: center;line-height: 150%;margin: 10px
 const IMAGE_FONT_STYLE = 'font-family:georgia,times,times new roman,serif';
 const IMAGE_SIZE_STYLE = 'font-size:17px';
 
-
 /** Email <img> built from the image atom. Not linked. */
-export const renderEmailImage = ({ src, altText = '' }: { src: string; altText?: string }) =>
+export const renderEmailImage = ({
+  src,
+  altText = '',
+}: {
+  src: string;
+  altText?: string;
+}) =>
   image({
     src: escapeAttr(src),
     alt: escapeAttr(altText),

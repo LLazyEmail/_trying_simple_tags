@@ -7,7 +7,10 @@ describe('linkComponent', () => {
     });
 
     test('creates an <a> element', () => {
-      const result = linkComponent({ href: 'https://example.com', content: 'click here' });
+      const result = linkComponent({
+        href: 'https://example.com',
+        content: 'click here',
+      });
       expect(result).toContain('<a ');
       expect(result).toContain('</a>');
     });
@@ -23,7 +26,10 @@ describe('linkComponent', () => {
 
   describe('attributes', () => {
     test('sets the href attribute correctly', () => {
-      const result = linkComponent({ href: 'https://example.com', content: 'x' });
+      const result = linkComponent({
+        href: 'https://example.com',
+        content: 'x',
+      });
       expect(result).toContain('href="https://example.com"');
     });
 

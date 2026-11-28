@@ -17,7 +17,15 @@ export default typographyComponents;
 
 export { RenderError } from './errors';
 export { Pipeline } from './pipeline';
-export { EmailRenderer, renderTag, headerRenderer, footerRenderer, contentBlockRenderer, twoColumnRenderer, heroRenderer } from './tags/render';
+export {
+  EmailRenderer,
+  renderTag,
+  headerRenderer,
+  footerRenderer,
+  contentBlockRenderer,
+  twoColumnRenderer,
+  heroRenderer,
+} from './tags/render';
 export type {
   TextAlign,
   BaseTag,

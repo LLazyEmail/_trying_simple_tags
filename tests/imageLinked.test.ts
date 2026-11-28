@@ -4,11 +4,16 @@ import imageComponent from '../src/components/image';
 describe('imageLinkedComponent', () => {
   describe('HTML structure', () => {
     test('returns a string', () => {
-      expect(typeof imageLinkedComponent({ src: 'img.png', altText: 'test' })).toBe('string');
+      expect(
+        typeof imageLinkedComponent({ src: 'img.png', altText: 'test' }),
+      ).toBe('string');
     });
 
     test('contains an <img> element', () => {
-      const result = imageLinkedComponent({ src: 'https://example.com/img.png', altText: 'photo' });
+      const result = imageLinkedComponent({
+        src: 'https://example.com/img.png',
+        altText: 'photo',
+      });
       expect(result).toContain('<img');
     });
 
@@ -19,7 +24,11 @@ describe('imageLinkedComponent', () => {
     });
 
     test('image is wrapped in an anchor element', () => {
-      const result = imageLinkedComponent({ src: 'img.png', altText: 'alt', href: 'https://example.com' });
+      const result = imageLinkedComponent({
+        src: 'img.png',
+        altText: 'alt',
+        href: 'https://example.com',
+      });
       const anchorOpen = result.indexOf('<a ');
       const img = result.indexOf('<img');
       const anchorClose = result.indexOf('</a>');
@@ -36,12 +45,18 @@ describe('imageLinkedComponent', () => {
 
   describe('attributes', () => {
     test('sets the src attribute to the provided URL', () => {
-      const result = imageLinkedComponent({ src: 'https://example.com/photo.jpg', altText: 'alt' });
+      const result = imageLinkedComponent({
+        src: 'https://example.com/photo.jpg',
+        altText: 'alt',
+      });
       expect(result).toContain('src="https://example.com/photo.jpg"');
     });
 
     test('sets the alt attribute from altText', () => {
-      const result = imageLinkedComponent({ src: 'img.png', altText: 'my image description' });
+      const result = imageLinkedComponent({
+        src: 'img.png',
+        altText: 'my image description',
+      });
       expect(result).toContain('alt="my image description"');
     });
 

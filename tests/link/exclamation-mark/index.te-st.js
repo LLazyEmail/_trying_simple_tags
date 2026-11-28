@@ -16,11 +16,7 @@ describe('testing link/exclamation-mark', () => {
       content: markdown,
     };
 
-    replaceMarkdown.call(
-      parsedContent,
-      REGEXP_LINK,
-      PlainCallbacks.link,
-    );
+    replaceMarkdown.call(parsedContent, REGEXP_LINK, PlainCallbacks.link);
 
     const fileName = 'exclamation-mark.html';
     write(fileName, parsedContent.content, outFolder);

@@ -5,6 +5,7 @@ This project now uses a two-layer architecture for typography components, separa
 ## Architecture
 
 ### Base Components (`src/components/base/`)
+
 Base components contain only the data and logic - they return plain JavaScript objects, not HTML strings.
 
 ```typescript
@@ -15,9 +16,11 @@ const data = baseItalic({ content: 'Hello' });
 ```
 
 ### Layout Functions (`src/components/layouts/`)
+
 Layout functions take the data objects from base components and render them into HTML strings.
 
 #### Default Layouts (`layouts/default.ts`)
+
 Contains the original email-client compatible layouts with inline styles.
 
 ```typescript
@@ -28,6 +31,7 @@ const html = italicLayout({ content: 'Hello' });
 ```
 
 #### Minimal Layouts (`layouts/minimal.ts`)
+
 Provides clean, minimal HTML without email-specific styling.
 
 ```typescript
@@ -40,6 +44,7 @@ const html = italicLayout({ content: 'Hello' });
 ## Usage
 
 ### Using the Refactored Components
+
 The existing components (`src/components/italic.ts`, etc.) now use the abstraction layer internally, so they work exactly as before:
 
 ```typescript
@@ -50,6 +55,7 @@ const html = italicComponent({ content: 'Hello' });
 ```
 
 ### Creating Custom Layouts
+
 Use the factory to create components with custom layouts:
 
 ```typescript
@@ -63,6 +69,7 @@ const html = components.paragraph({ content: 'Hello' });
 ```
 
 ### Creating a Custom Layout Set
+
 Create a new layout file (e.g., `layouts/custom.ts`):
 
 ```typescript

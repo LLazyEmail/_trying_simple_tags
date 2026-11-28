@@ -2,6 +2,7 @@ import type { MainTitleImageComponent } from '@llazyemail/component-types';
 import imageComponent from './image';
 
 /** Same unlinked image as imageComponent. Use imageLinkedComponent for an anchor wrapper. */
-const mainTitleImageComponent: MainTitleImageComponent = (props) => imageComponent(props);
+const mainTitleImageComponent: MainTitleImageComponent = (props) =>
+  imageComponent(props);
 
 export default mainTitleImageComponent;
