@@ -1,7 +1,7 @@
 {
   "name": "@llazyemail/simple-tags",
   "version": "6.1.0",
-  "description": "im trying to separate part of our code",
+  "description": "Pure functions that turn email component props into HTML strings.",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -69,5 +69,16 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/LLazyEmail/_trying_simple_tags"
-  }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "email",
+    "html",
+    "typography",
+    "newsletter",
+    "postmark"
+  ]
 }
