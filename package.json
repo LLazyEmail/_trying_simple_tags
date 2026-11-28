@@ -63,7 +63,6 @@
   },
   "dependencies": {
     "@llazyemail/component-types": "0.1.1",
-    "lit-typography": "^0.1.0",
     "stringify-attributes": "^5.0.0"
   },
   "repository": {
