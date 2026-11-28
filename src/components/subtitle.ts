@@ -1,5 +1,5 @@
 import stringifyAttributes from 'stringify-attributes';
-import type { SubtitleComponent } from '../../types/components';
+import type { SubtitleComponent } from '@llazyemail/component-types';
 const subtitleComponent: SubtitleComponent = ({ content }) => {
   const attributes = {
     dir: `ltr`,

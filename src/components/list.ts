@@ -1,4 +1,4 @@
-import type { ListComponent } from '../../types/components';
+import type { ListComponent } from '@llazyemail/component-types';
 import text from './atoms/text';
 
 const listComponent: ListComponent = ({ content }) =>

@@ -25,7 +25,7 @@ export const IMAGE_STYLE =
  * @param {string} altText - Image alt text.
  * @returns {string} Stringified HTML attributes.
  */
-export const buildImageAttributes = (src, altText) =>
+export const buildImageAttributes = (src: string, altText?: string) =>
   stringifyAttributes({
     'data-file-id': '1041068',
     src,
@@ -45,7 +45,7 @@ export const buildImageAttributes = (src, altText) =>
  * @param {string} imgHtml - The <img> element HTML string.
  * @returns {string} Full paragraph-wrapped image HTML.
  */
-export const buildImageWrapper = (imgHtml) =>
+export const buildImageWrapper = (imgHtml: string) =>
   `<p dir="ltr" 
     style="text-align: center;line-height: 150%;margin: 10px 0;padding: 0;${EMAIL_CLIENT_STYLES}color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;"><span style="font-family:georgia,times,times new roman,serif"><span style="font-size:17px"><a href="{href}" target="_blank" style="${LINK_STYLE}">    
         ${imgHtml}

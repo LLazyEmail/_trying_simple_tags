@@ -1,6 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 import { IMAGE_STYLE } from '../helpers';
-import type { ParagraphUpdatedComponent } from '../../types/components';
+import type { ParagraphUpdatedComponent } from '@llazyemail/component-types';
 
 const paragraphComponentUpdated: ParagraphUpdatedComponent = ({ content, src, altText }) => {
   const attributes = {

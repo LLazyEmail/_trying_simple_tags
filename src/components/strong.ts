@@ -1,4 +1,4 @@
-import type { StrongComponent } from '../../types/components';
+import type { StrongComponent } from '@llazyemail/component-types';
 import text from './atoms/text';
 
 const strongComponent: StrongComponent = ({ content }) =>

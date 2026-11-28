@@ -1,4 +1,4 @@
-import type { ImageLinkedComponent } from '../../types/components';
+import type { ImageLinkedComponent } from '@llazyemail/component-types';
 import link from './atoms/link';
 import { LINK_STYLE } from '../helpers';
 import { renderEmailImage, wrapEmailImage } from './image';

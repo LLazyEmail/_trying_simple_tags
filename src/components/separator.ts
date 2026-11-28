@@ -1,5 +1,5 @@
 import stringifyAttributes from 'stringify-attributes';
-import type { SeparatorComponent } from '../../types/components';
+import type { SeparatorComponent } from '@llazyemail/component-types';
 
 const separatorComponent: SeparatorComponent = ({ src, altText } = {}) => {
   const attributes = {

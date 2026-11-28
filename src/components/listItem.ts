@@ -1,4 +1,4 @@
-import type { ListItemComponent } from '../../types/components';
+import type { ListItemComponent } from '@llazyemail/component-types';
 import { baseListItem } from './base/listItem';
 import { listItemLayout } from './layouts/default';
 

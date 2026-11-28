@@ -1,4 +1,4 @@
-import type { HeadingComponent } from '../../types/components';
+import type { HeadingComponent } from '@llazyemail/component-types';
 import { baseHeading } from './base/heading';
 import { headingLayout } from './layouts/default';
 
