@@ -98,7 +98,7 @@ One file per key on `TypographyComponents`:
 
 This is the theme seam. A base function normalizes props. A layout function turns that data into markup. `createComponents(layouts)` builds a component set for a theme.
 
-Only heading, list item, and paragraph use this path today. The other twelve components are still hand-written. `factory.ts` is not on the public entry. Finishing this for every component the templates need is the next structural step; the default layout must keep today's output byte for byte.
+The template set uses this path: italic, link, list, list item, paragraph, strong, image, heading, and title. `createComponents` and `Layouts` are exported. A Postmark theme implements `Layouts` and does not change this package. Button, separator, subtitle, and the updated paragraph stay hand-written; they are Postmark blocks or unused by templates.
 
 ### 4. The map
 

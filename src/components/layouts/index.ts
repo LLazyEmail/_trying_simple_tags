@@ -7,4 +7,5 @@ export {
   strongLayout,
   imageLayout,
   headingLayout,
+  titleLayout,
 } from './default';

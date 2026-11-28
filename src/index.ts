@@ -68,3 +68,6 @@ export type {
   ListItemComponent,
   TypographyComponents,
 } from '@llazyemail/component-types';
+
+export { createComponents } from './components/factory';
+export type { Layouts } from './components/factory';

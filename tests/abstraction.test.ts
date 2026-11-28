@@ -49,6 +49,9 @@ describe('Abstraction Layer - Custom Layouts', () => {
 
     const image = components.image({ src: 'img.png', altText: 'alt' });
     expect(image).toBe('<img src="img.png" alt="alt" />');
+
+    const title = components.title({ content: 'Hello' });
+    expect(title).toBe('<h1>Hello</h1>');
   });
 
   test('Base components return data objects', () => {

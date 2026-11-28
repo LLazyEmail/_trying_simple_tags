@@ -1,7 +1,8 @@
 import type { StrongComponent } from '@llazyemail/component-types';
-import text from './atoms/text';
+import { baseStrong } from './base/strong';
+import { strongLayout } from './layouts/default';
 
 const strongComponent: StrongComponent = ({ content }) =>
-  text({ tag: 'strong', style: 'font-weight: bolder;', content });
+  strongLayout(baseStrong({ content }));
 
 export default strongComponent;
