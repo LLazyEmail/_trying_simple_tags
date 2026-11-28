@@ -29,11 +29,11 @@
     "test:visual": "vitest run tests/visual-review.test.ts",
     "typecheck": "tsc --noEmit",
     "clean": "shx rm -rf ./coverage && shx rm -rf ./dist",
-    "lint:prettier": "prettier --write src/",
+    "lint:prettier": "prettier --write src tests docs README.md CHANGELOG.md",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier --write src/",
-    "format:check": "prettier --check src/"
+    "format": "prettier --write src tests docs README.md CHANGELOG.md",
+    "format:check": "prettier --check src tests docs README.md CHANGELOG.md"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
