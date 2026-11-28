@@ -1,205 +1,177 @@
-# atherdon-newsletter-js-layouts-typography
+# @llazyemail/simple-tags
 
-> Plain JS typography template for the MTE plugin. A set of tiny, pure functions that turn props into HTML strings for newsletters.
+Runtime library that turns email component props into HTML strings.
 
-Repo: `_trying_simple_tags` · Package global (browser): `newsletterLayoutsTypographyPlainJS`
-More details: [template docs](https://github.com/LLazyEmail/documentation/blob/main/docs/templates/hn/details.md)
+The **contract** lives in the Postmark repo. This package is the **implementation**. It does not render a document, talk to Postmark, or know about templates. A caller passes props; a function returns markup.
 
----
+Package: `@llazyemail/simple-tags` · Repo: [`LLazyEmail/_trying_simple_tags`](https://github.com/LLazyEmail/_trying_simple_tags) · Registry: GitHub Packages
 
-## 🤖 For AI Agents (start here)
+## What it does
 
-If you are an AI coding agent (Claude Code, Codex, Cursor, Copilot, etc.), read this section before touching anything.
+Each public component is a pure function:
 
-### TL;DR
-
-| Fact | Value |
-|---|---|
-| What it is | Library of pure functions: `props -> HTML string` |
-| Language | Plain JavaScript (ESM source), with `tsc --noEmit` typechecking |
-| Test runner | **Vitest** (no Jest, no Babel) |
-| Bundler | **tsup** (CJS + ESM + IIFE) |
-| Lint / format | ESLint + Prettier |
-| Side effects | None. No DOM, no network, no global state |
-| Entry point | `src/index.js` |
-
-### Setup
-
-```bash
-npm install
+```ts
+(props) => htmlString
 ```
 
-### The verification loop
+There is no DOM, no network, and no shared state. The default export is the map of those functions. It satisfies `TypographyComponents` from `@llazyemail/component-types`, so a contract change fails typecheck here instead of in a consumer.
 
-Run these after **every** change, in this order. Do not report a task as done until all pass.
+```ts
+import typography from '@llazyemail/simple-tags';
 
-```bash
-npm run format        # normalize style
-npm run lint          # must be clean
-npm run typecheck     # must be clean
-npm test              # must pass
-npm run build         # must succeed (verifies all 3 bundles)
+typography.paragraphComponent({ content: 'Hello' });
+typography.linkComponent({ href: 'https://example.com', content: 'Read' });
+typography.imageComponent({ src: 'https://example.com/img.png', altText: 'cover' });
 ```
 
-Use `npm run test:watch` while iterating and `npm run lint:fix` for autofixable lint issues. For read-only checks (e.g. CI-style), use `npm run format:check`.
+The default markup is the old newsletter style: inline styles, a fixed 220×134 image, `data-file-id="1041068"`, and `{href}` as the placeholder on a linked image. That is intentional. Postmark templates use classes (`f-fallback`, `button`) and must not call these default components directly. They need a Postmark layout (see below).
 
-### Map of the repo
+## How it connects to the Postmark repo
 
+```text
+postmark-transactional-template-simple
+  packages/component-types          @llazyemail/component-types
+  src/templates/*                   Postmark templates (not a consumer yet)
+
+_trying_simple_tags                 @llazyemail/simple-tags
+  depends on component-types
+  implements the component functions
 ```
+
+| Piece | Where | Role |
+|---|---|---|
+| `@llazyemail/component-types` | [`postmark-transactional-template-simple/packages/component-types`](https://github.com/LLazyEmail/postmark-transactional-template-simple/tree/main/packages/component-types) | Props and function signatures only. No renderer. Published to GitHub Packages. |
+| `@llazyemail/simple-tags` | this repo | The functions. Depends on `component-types`. |
+| Postmark templates | `src/templates` in the Postmark repo | Not wired to this package yet. They emit their own tags and a class-based shell. |
+
+The two packages stay separate on purpose. The Postmark repo's rules say `@llazyemail/*` is installed from npm, not copied in, and `packages/*` must not import template code. So the contract moved out, and the runtime stayed here.
+
+Adoption, when it happens, looks like this: the Postmark repo writes a `postmarkLayout` that implements this package's `Layouts`, builds `t = createComponents(postmarkLayout)`, and templates import `t`. This package never learns Postmark class names.
+
+## Hierarchy
+
+```text
+atoms                         dumb HTML builders
+  text, link, image, spacer, divider
+
+components                    one file per public function
+  most compose atoms
+  heading, listItem, paragraph go base -> layout
+
+components.ts                 the default export
+  the 15 components + atoms
+  satisfies TypographyComponents
+
+tag renderer                  a second, structured API
+  header, footer, content, two-column, hero
+
+pipeline                      a string transform chain
+```
+
+### 1. Atoms
+
+`src/components/atoms/`
+
+The smallest builders. `text` emits a tag, `link` an anchor, `image` an `img`, plus `spacer` and `divider`. They do not know about newsletter chrome. Public components pass them style and content.
+
+### 2. Components
+
+`src/components/*.ts`
+
+One file per key on `TypographyComponents`:
+
+| Key | File | Built from |
+|---|---|---|
+| `headingComponent` | `heading.ts` | base + default layout |
+| `paragraphComponent` | `paragraph.ts` | base + default layout |
+| `listItemComponent` | `listItem.ts` | base + default layout |
+| `linkComponent` | `link.ts` | link atom |
+| `imageComponent` | `image.ts` | image atom, not linked |
+| `imageLinkedComponent` | `imageLinked.ts` | link atom around the image atom |
+| `italicComponent`, `strongComponent`, `listComponent`, `titleComponent`, `subtitleComponent`, `buttonComponent`, `separatorComponent`, `mainTitleImageComponent`, `paragraphComponentUpdated` | matching files | atoms or `stringify-attributes` |
+
+`imageComponent` is the image. `imageLinkedComponent` is the anchor around that same image. Do not fold the link back into the image.
+
+### 3. Base and layout
+
+`src/components/base/`, `src/components/layouts/`, `src/components/factory.ts`
+
+This is the theme seam. A base function normalizes props. A layout function turns that data into markup. `createComponents(layouts)` builds a component set for a theme.
+
+Only heading, list item, and paragraph use this path today. The other twelve components are still hand-written. `factory.ts` is not on the public entry. Finishing this for every component the templates need is the next structural step; the default layout must keep today's output byte for byte.
+
+### 4. The map
+
+`src/components.ts`
+
+Assembles the fifteen components and the atom bag into the default export. The `satisfies TypographyComponents` line is the conformance gate against the Postmark contract.
+
+### 5. Tag renderer and pipeline
+
+`src/tags/render.ts`, `src/pipeline.ts`, `types/`
+
+A separate API for structured blocks: header, footer, content, two-column, hero. `EmailRenderer` and `renderTag` live here. `Pipeline` runs string steps in order. These types stay internal to this package until a second consumer needs them.
+
+## Layout of the repo
+
+```text
 src/
-  components/    # one file per typography component (the real logic lives here)
-  components.js  # aggregates every component into a single export
-  config.js      # shared configuration values (colors, sizes, etc.)
-  index.js       # package entry point; public API surface
-tests/
-  *.test.js      # Vitest unit tests
-  *.test.ts      # typed Vitest examples
-dist/            # build output (generated, never edit by hand)
+  index.ts                 public entry
+  components.ts            default export map
+  components/              one component per file
+    atoms/                 text, link, image, spacer, divider
+    base/                  normalized props for the layout path
+    layouts/               default and minimal layouts
+    factory.ts             createComponents(layouts)
+  tags/render.ts           structured tag renderer
+  pipeline.ts              string step chain
+  helpers.ts               shared inline-style fragments
+  errors.ts                RenderError
+types/                     tag, layout, renderer, pipeline types
+tests/                     Vitest
+dist/                      tsup output, do not edit
 ```
 
-### Component contract
+## Public surface
 
-Every component:
+From `src/index.ts`:
 
-1. Is a **plain function** that accepts props and **returns an HTML string**.
-2. Is **pure and deterministic**: same input, same output. No DOM access, no I/O.
-3. Lives in `src/components/` and is re-exported through `src/components.js`, then `src/index.js`.
-4. Takes shared styling values from `src/config.js` rather than hard-coding them.
+- default export: the component map
+- `atoms`, `text`, `link`, `image`, `spacer`, `divider`
+- atom prop types, and the component prop types re-exported from `@llazyemail/component-types`
+- `renderTag`, `EmailRenderer`, and the other tag renderers
+- `Pipeline`, `RenderError`
 
-Available components:
+## Install
 
-| Export | Output |
-|---|---|
-| `headingComponent` | `<h3>` section heading |
-| `titleComponent` | `<h1>` main title |
-| `subtitleComponent` | styled `<p>` subtitle |
-| `paragraphComponent` | body text wrapper `<div>` |
-| `strongComponent` | `<strong>` bold text |
-| `italicComponent` | `<i>` italic text |
-| `linkComponent` | `<a>` anchor |
-| `listComponent` | `<ul>` unordered list |
-| `listItemComponent` | `<li>` with inner `<p>` |
-| `imageComponent` | `<img>` inside a centered `<p>` |
-| `separatorComponent` | horizontal `***` separator |
-| `buttonComponent` | styled `<a>` button link |
+GitHub Packages, scope `@llazyemail`:
 
-> ⚠️ Prop names and exact HTML are not documented here on purpose, so they can't drift from the code. **Read the component file and its test before using or changing it.**
-
-### Recipes
-
-**Add a new component**
-
-1. Create `src/components/<name>Component.js` exporting a pure function that returns a string.
-2. Pull shared styles from `src/config.js` instead of inlining magic values.
-3. Re-export it from `src/components.js` (and confirm it surfaces through `src/index.js`).
-4. Add `tests/<name>Component.test.js` covering default props, custom props, and empty/edge input.
-5. Add a row to the component table in this README.
-6. Run the verification loop.
-
-**Change an existing component's output**
-
-1. Read its current test first. Existing tests define the contract.
-2. Update the implementation, then update tests to match the *intended* new output.
-3. Treat output changes as potentially breaking for downstream MTE templates; call this out in your summary.
-
-**Fix a bug**
-
-1. Write a failing test that reproduces it.
-2. Fix the code.
-3. Confirm the test passes and the full loop is green.
-
-### Rules
-
-**Do**
-- Keep functions pure and string-in/string-out.
-- Match existing naming (`<thing>Component`) and file layout.
-- Escape or sanitize user-provided strings if you introduce any new interpolation, and note it in tests.
-- Keep changes small and focused; one concern per change.
-
-**Don't**
-- Don't add Jest or Babel. The toolchain is Vitest + tsup on purpose.
-- Don't edit `dist/`. It is generated by `npm run build`.
-- Don't add runtime dependencies without a strong reason; this library is meant to stay tiny.
-- Don't touch the DOM or use browser-only APIs; output must work in Node, ESM, CJS, and the IIFE bundle.
-- Don't change `separatorComponent`'s `***` output casually; it is intentionally not an HTML tag.
-- Don't skip failing tests or loosen lint rules to get green.
-
-### Definition of done
-
-- [ ] `format`, `lint`, `typecheck`, `test`, and `build` all pass
-- [ ] New or changed behavior has tests
-- [ ] README component table updated if the public API changed
-- [ ] No unrelated files modified
-- [ ] Summary notes any output changes that could affect downstream templates
-
-### When you're unsure
-
-Prefer reading the nearest existing component and test and mirroring them over inventing a new pattern. If the intended HTML for something is ambiguous, ask rather than guess.
-
----
-
-## 👩‍💻 For Humans
-
-### Quick start
+```ini
+@llazyemail:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
 
 ```bash
-npm install
-npm test
-npm run build
+npm install @llazyemail/simple-tags
 ```
 
-### Usage
-
-```js
-import * as components from 'atherdon-newsletter-js-layouts-typography';
-
-// Each component takes props and returns an HTML string.
-// See src/components/ for the exact props each one accepts.
-```
-
-Browser (IIFE build):
-
-```html
-<script src="dist/index.iife.js"></script>
-<script>
-  // Components are available on the global:
-  console.log(newsletterLayoutsTypographyPlainJS);
-</script>
-```
-
-### Commands
-
-| Command | Description |
-|---|---|
-| `npm test` | Run tests with Vitest |
-| `npm run test:watch` | Vitest watch mode |
-| `npm run typecheck` | Typecheck with `tsc --noEmit` |
-| `npm run lint` | Lint `src/` with ESLint |
-| `npm run lint:fix` | Auto-fix ESLint issues |
-| `npm run format` | Format source files with Prettier |
-| `npm run format:check` | Check formatting without writing |
-| `npm run build` | Build CJS, ESM, and IIFE bundles with tsup |
-| `npm run dev` | Watch mode build |
-
-### Build output
-
-Bundled with [tsup](https://tsup.egoist.dev/). `npm run build` writes:
+## Build output
 
 | File | Format | package.json field |
 |---|---|---|
 | `dist/index.cjs.js` | CommonJS | `main` |
 | `dist/index.es.js` | ESM | `module` |
-| `dist/index.iife.js` | Browser IIFE | `browser` (global `newsletterLayoutsTypographyPlainJS`) |
+| `dist/index.iife.js` | Browser IIFE, global `newsletterLayoutsTypographyPlainJS` | `browser` |
+| `dist/index.d.ts` | Types | `types` |
 
-Tests run with Vitest. There is no Jest or Babel in the toolchain.
+## For agents
 
-### Contributing
+TypeScript source. Vitest. tsup. ESLint and Prettier. Entry is `src/index.ts`, not `src/index.js`.
 
-1. Fork and create a branch.
-2. Make your change with tests.
-3. Run `npm run format && npm run lint && npm run typecheck && npm test && npm run build`.
-4. Open a pull request describing what changed and why.
+After a change, in order: `npm run format`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
 
-### License
+Do not vendor this package into the Postmark repo. Depend on the published version. Do not import Postmark template code from here.
 
-See the repository for license information.
+## License
+
+MIT
