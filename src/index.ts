@@ -1,7 +1,17 @@
 import typographyComponents from './components';
 
 export { atoms, text, link, image, spacer, divider } from './components/atoms';
-export type { TextProps, LinkProps, ImageProps, SpacerProps, DividerProps } from './components/atoms';
+export type {
+  TextAtomProps,
+  LinkAtomProps,
+  ImageAtomProps,
+  SpacerAtomProps,
+  DividerAtomProps,
+} from './components/atoms';
+/** @deprecated Use LinkAtomProps. */
+export type { LinkProps as DeprecatedLinkAtomProps } from './components/atoms';
+/** @deprecated Use ImageAtomProps. */
+export type { ImageProps as DeprecatedImageAtomProps } from './components/atoms';
 
 export default typographyComponents;
 
@@ -40,7 +50,7 @@ export type {
   StrongComponent,
   ItalicProps,
   ItalicComponent,
-  ImageProps as ComponentImageProps,
+  ImageProps,
   ImageComponent,
   ImageLinkedProps,
   ImageLinkedComponent,
@@ -48,7 +58,7 @@ export type {
   MainTitleImageComponent,
   ButtonProps,
   ButtonComponent,
-  LinkProps as ComponentLinkProps,
+  LinkProps,
   LinkComponent,
   SeparatorProps,
   SeparatorComponent,

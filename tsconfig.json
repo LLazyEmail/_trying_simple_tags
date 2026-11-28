@@ -25,5 +25,9 @@
     "registry.ts",
     "vitest.config.ts",
     "tsup.config.js"
+  ],
+  "exclude": [
+    "tests/**/*.te-st.js",
+    "tests/**/*.tezt.js"
   ]
 }

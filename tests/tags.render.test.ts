@@ -42,7 +42,7 @@ describe('tag renderers', () => {
   });
 
   test('escapes header text', () => {
-    expect(renderTag({ kind: 'header', text: '<script>' })).toContain('<script>');
+    expect(renderTag({ kind: 'header', text: '<script>' })).toContain('\u0026lt;script\u0026gt;');
   });
 
   test('throws RenderError when required text is missing', () => {

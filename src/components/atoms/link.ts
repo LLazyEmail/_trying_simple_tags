@@ -1,4 +1,4 @@
-export interface LinkProps {
+export interface LinkAtomProps {
   content?: string;
   href?: string;
   target?: string;
@@ -16,7 +16,7 @@ const link = ({
   style = '',
   className = '',
   attributes = '',
-}: LinkProps = {}) => {
+}: LinkAtomProps = {}) => {
   const classAttr = className ? ` class="${className}"` : '';
   const styleAttr = style ? ` style="${style}"` : '';
   const relAttr = rel ? ` rel="${rel}"` : '';
@@ -25,3 +25,6 @@ const link = ({
 };
 
 export default link;
+
+/** @deprecated Use LinkAtomProps. Removed in the next major. */
+export type LinkProps = LinkAtomProps;

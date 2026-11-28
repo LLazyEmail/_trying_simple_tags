@@ -1,4 +1,4 @@
-export interface ImageProps {
+export interface ImageAtomProps {
   src?: string;
   alt?: string;
   width?: string;
@@ -16,7 +16,7 @@ const image = ({
   style = '',
   className = '',
   attributes = '',
-}: ImageProps = {}) => {
+}: ImageAtomProps = {}) => {
   const widthAttr = width ? ` width="${width}"` : '';
   const heightAttr = height ? ` height="${height}"` : '';
   const classAttr = className ? ` class="${className}"` : '';
@@ -26,3 +26,6 @@ const image = ({
 };
 
 export default image;
+
+/** @deprecated Use ImageAtomProps. Removed in the next major. */
+export type ImageProps = ImageAtomProps;

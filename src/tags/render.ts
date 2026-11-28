@@ -2,13 +2,8 @@ import type { ContentBlockTag, FooterTag, HeaderTag, Tag } from '../../types/tag
 import type { HeroSection, TwoColumnLayout } from '../../types/layouts';
 import type { IEmailRenderer, IRenderer } from '../../types/renderer';
 import { RenderError } from '../errors';
+import { escapeHtml } from '../escape';
 
-const escapeHtml = (value: string) =>
-  value
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"');
 
 const styleToString = (style?: Record<string, string>, extra?: string) => {
   const parts = [

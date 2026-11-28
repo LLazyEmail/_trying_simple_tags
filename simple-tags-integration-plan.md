@@ -140,3 +140,11 @@ Templates could not be rendered in this sandbox (their dependency comes from the
 - This repo now depends on that package. The 15 component files import their prop types from it. `types/components.ts` is gone.
 - The default export `satisfies TypographyComponents`, so contract drift fails typecheck.
 - CI authenticates to GitHub Packages so the new dependency installs.
+
+
+## 9. Phase 2 started 2026-11-28
+
+- Escape helpers now emit real HTML entities. This is breaking for inputs that contain `&`, `<`, `>`, or `"`.
+- Atom prop types renamed to `*AtomProps`, with deprecated aliases for this major. Component prop types stay the `component-types` names.
+- Removed `declare module '*'`. Fixture `*.te-st.js` files are excluded from typecheck. `stringify-attributes` has an explicit declaration.
+- Version bumped to 6.0.0.

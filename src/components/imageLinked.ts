@@ -1,14 +1,8 @@
 import type { ImageLinkedComponent } from '@llazyemail/component-types';
 import link from './atoms/link';
 import { LINK_STYLE } from '../helpers';
+import { escapeAttr } from '../escape';
 import { renderEmailImage, wrapEmailImage } from './image';
-
-const escapeAttr = (value: string) =>
-  value
-    .replace(/&/g, '&')
-    .replace(/"/g, '"')
-    .replace(/</g, '<')
-    .replace(/>/g, '>');
 
 /**
  * Linked image: the link atom is the anchor wrapper around the image atom.
