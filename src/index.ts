@@ -79,3 +79,6 @@ export type {
 
 export { createComponents } from './components/factory';
 export type { Layouts } from './components/factory';
+
+export * as defaultLayouts from './components/layouts/default';
+export * as minimalLayouts from './components/layouts/minimal';
