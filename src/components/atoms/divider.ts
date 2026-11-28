@@ -1,4 +1,4 @@
-export interface DividerProps {
+export interface DividerAtomProps {
   color?: string;
   thickness?: number;
   margin?: string;
@@ -10,9 +10,12 @@ const divider = ({
   thickness = 1,
   margin = '16px 0',
   attributes = '',
-}: DividerProps = {}) => {
+}: DividerAtomProps = {}) => {
   const extraAttr = attributes ? ` ${attributes}` : '';
   return `<hr style="border:0;border-top:${thickness}px solid ${color};margin:${margin};"${extraAttr} />`;
 };
 
 export default divider;
+
+/** @deprecated Use DividerAtomProps. Removed in the next major. */
+export type DividerProps = DividerAtomProps;

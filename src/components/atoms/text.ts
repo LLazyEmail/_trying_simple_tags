@@ -1,4 +1,4 @@
-export interface TextProps {
+export interface TextAtomProps {
   content?: string;
   tag?: string;
   style?: string;
@@ -12,7 +12,7 @@ const text = ({
   style = '',
   className = '',
   attributes = '',
-}: TextProps = {}) => {
+}: TextAtomProps = {}) => {
   const classAttr = className ? ` class="${className}"` : '';
   const styleAttr = style ? ` style="${style}"` : '';
   const extraAttr = attributes ? ` ${attributes}` : '';
@@ -20,3 +20,6 @@ const text = ({
 };
 
 export default text;
+
+/** @deprecated Use TextAtomProps. Removed in the next major. */
+export type TextProps = TextAtomProps;

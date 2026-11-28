@@ -2,17 +2,12 @@ import type { ImageComponent } from '@llazyemail/component-types';
 import image from './atoms/image';
 import text from './atoms/text';
 import { EMAIL_CLIENT_STYLES, IMAGE_STYLE } from '../helpers';
+import { escapeAttr } from '../escape';
 
 const IMAGE_PARAGRAPH_STYLE = `text-align: center;line-height: 150%;margin: 10px 0;padding: 0;${EMAIL_CLIENT_STYLES}color: #111111;font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 18px;`;
 const IMAGE_FONT_STYLE = 'font-family:georgia,times,times new roman,serif';
 const IMAGE_SIZE_STYLE = 'font-size:17px';
 
-const escapeAttr = (value: string) =>
-  value
-    .replace(/&/g, '&')
-    .replace(/"/g, '"')
-    .replace(/</g, '<')
-    .replace(/>/g, '>');
 
 /** Email <img> built from the image atom. Not linked. */
 export const renderEmailImage = ({ src, altText = '' }: { src: string; altText?: string }) =>
