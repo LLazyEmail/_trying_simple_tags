@@ -1,5 +1,6 @@
 import stringifyAttributes from 'stringify-attributes';
 import { EMAIL_CLIENT_STYLES, LINK_STYLE } from '../../helpers';
+import { escapeAttr } from '../../escape';
 import { renderEmailImage, wrapEmailImage } from '../image';
 
 /**
@@ -12,7 +13,7 @@ export const italicLayout = (data: { content: string }): string => {
 };
 
 export const linkLayout = (data: { href: string; content: string }): string => {
-  return `<a href="${data.href}" target="_blank" style="${LINK_STYLE}">${data.content}</a>`;
+  return `<a href="${escapeAttr(data.href)}" target="_blank" style="${LINK_STYLE}">${data.content}</a>`;
 };
 
 export const listLayout = (data: { content: string }): string => {
