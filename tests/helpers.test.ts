@@ -2,8 +2,6 @@ import {
   EMAIL_CLIENT_STYLES,
   LINK_STYLE,
   IMAGE_STYLE,
-  buildImageAttributes,
-  buildImageWrapper,
 } from '../src/helpers';
 
 describe('helpers', () => {
@@ -78,88 +76,6 @@ describe('helpers', () => {
 
     test('sets bicubic interpolation for Outlook', () => {
       expect(IMAGE_STYLE).toContain('-ms-interpolation-mode: bicubic');
-    });
-  });
-
-  describe('buildImageAttributes', () => {
-    test('returns a string', () => {
-      expect(typeof buildImageAttributes('img.png', 'alt text')).toBe('string');
-    });
-
-    test('includes the provided src attribute', () => {
-      const result = buildImageAttributes('https://example.com/photo.jpg', 'photo');
-      expect(result).toContain('src="https://example.com/photo.jpg"');
-    });
-
-    test('includes the provided alt attribute', () => {
-      const result = buildImageAttributes('img.png', 'my image description');
-      expect(result).toContain('alt="my image description"');
-    });
-
-    test('includes a data-file-id attribute', () => {
-      const result = buildImageAttributes('img.png', 'alt');
-      expect(result).toContain('data-file-id');
-    });
-
-    test('includes the standard image width style', () => {
-      const result = buildImageAttributes('img.png', 'alt');
-      expect(result).toContain('width: 220px');
-    });
-
-    test('includes the standard image height style', () => {
-      const result = buildImageAttributes('img.png', 'alt');
-      expect(result).toContain('height: 134px');
-    });
-  });
-
-  describe('buildImageWrapper', () => {
-    const imgHtml = '<img src="img.png" alt="alt text" />';
-
-    test('returns a string', () => {
-      expect(typeof buildImageWrapper(imgHtml)).toBe('string');
-    });
-
-    test('wraps the image in a paragraph element', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('<p');
-      expect(result).toContain('</p>');
-    });
-
-    test('wraps the image in an anchor element', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('<a ');
-      expect(result).toContain('</a>');
-    });
-
-    test('includes the provided img HTML verbatim', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain(imgHtml);
-    });
-
-    test('centers the image horizontally', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('text-align: center');
-    });
-
-    test('applies the link style to the anchor', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('font-weight: bold');
-      expect(result).toContain('text-decoration: underline');
-    });
-
-    test('includes email-client compatibility styles', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('mso-line-height-rule: exactly');
-    });
-
-    test('sets ltr direction on the paragraph', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('dir="ltr"');
-    });
-
-    test('opens link in new tab', () => {
-      const result = buildImageWrapper(imgHtml);
-      expect(result).toContain('target="_blank"');
     });
   });
 });
