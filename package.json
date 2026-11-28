@@ -80,5 +80,9 @@
     "typography",
     "newsletter",
     "postmark"
-  ]
+  ],
+  "homepage": "https://github.com/LLazyEmail/_trying_simple_tags#readme",
+  "bugs": {
+    "url": "https://github.com/LLazyEmail/_trying_simple_tags/issues"
+  }
 }
