@@ -11,7 +11,7 @@ Package: `@llazyemail/simple-tags` · Repo: [`LLazyEmail/_trying_simple_tags`](h
 Each public component is a pure function:
 
 ```ts
-(props) => htmlString
+(props) => htmlString;
 ```
 
 There is no DOM, no network, and no shared state. The default export is the map of those functions. It satisfies `TypographyComponents` from `@llazyemail/component-types`, so a contract change fails typecheck here instead of in a consumer.
@@ -21,7 +21,10 @@ import typography from '@llazyemail/simple-tags';
 
 typography.paragraphComponent({ content: 'Hello' });
 typography.linkComponent({ href: 'https://example.com', content: 'Read' });
-typography.imageComponent({ src: 'https://example.com/img.png', altText: 'cover' });
+typography.imageComponent({
+  src: 'https://example.com/img.png',
+  altText: 'cover',
+});
 ```
 
 The default markup is the old newsletter style: inline styles, a fixed 220×134 image, `data-file-id="1041068"`, and `{href}` as the placeholder on a linked image. That is intentional. Postmark templates use classes (`f-fallback`, `button`) and must not call these default components directly. They need a Postmark layout (see below).
@@ -38,11 +41,11 @@ _trying_simple_tags                 @llazyemail/simple-tags
   implements the component functions
 ```
 
-| Piece | Where | Role |
-|---|---|---|
-| `@llazyemail/component-types` | [`postmark-transactional-template-simple/packages/component-types`](https://github.com/LLazyEmail/postmark-transactional-template-simple/tree/main/packages/component-types) | Props and function signatures only. No renderer. Published to GitHub Packages. |
-| `@llazyemail/simple-tags` | this repo | The functions. Depends on `component-types`. |
-| Postmark templates | `src/templates` in the Postmark repo | Not wired to this package yet. They emit their own tags and a class-based shell. |
+| Piece                         | Where                                                                                                                                                                        | Role                                                                             |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `@llazyemail/component-types` | [`postmark-transactional-template-simple/packages/component-types`](https://github.com/LLazyEmail/postmark-transactional-template-simple/tree/main/packages/component-types) | Props and function signatures only. No renderer. Published to GitHub Packages.   |
+| `@llazyemail/simple-tags`     | this repo                                                                                                                                                                    | The functions. Depends on `component-types`.                                     |
+| Postmark templates            | `src/templates` in the Postmark repo                                                                                                                                         | Not wired to this package yet. They emit their own tags and a class-based shell. |
 
 The two packages stay separate on purpose. The Postmark repo's rules say `@llazyemail/*` is installed from npm, not copied in, and `packages/*` must not import template code. So the contract moved out, and the runtime stayed here.
 
@@ -80,15 +83,15 @@ The smallest builders. `text` emits a tag, `link` an anchor, `image` an `img`, p
 
 One file per key on `TypographyComponents`:
 
-| Key | File | Built from |
-|---|---|---|
-| `headingComponent` | `heading.ts` | base + default layout |
-| `paragraphComponent` | `paragraph.ts` | base + default layout |
-| `listItemComponent` | `listItem.ts` | base + default layout |
-| `linkComponent` | `link.ts` | link atom |
-| `imageComponent` | `image.ts` | image atom, not linked |
-| `imageLinkedComponent` | `imageLinked.ts` | link atom around the image atom |
-| `italicComponent`, `strongComponent`, `listComponent`, `titleComponent`, `subtitleComponent`, `buttonComponent`, `separatorComponent`, `mainTitleImageComponent`, `paragraphComponentUpdated` | matching files | atoms or `stringify-attributes` |
+| Key                                                                                                                                                                                           | File             | Built from                      |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------- |
+| `headingComponent`                                                                                                                                                                            | `heading.ts`     | base + default layout           |
+| `paragraphComponent`                                                                                                                                                                          | `paragraph.ts`   | base + default layout           |
+| `listItemComponent`                                                                                                                                                                           | `listItem.ts`    | base + default layout           |
+| `linkComponent`                                                                                                                                                                               | `link.ts`        | link atom                       |
+| `imageComponent`                                                                                                                                                                              | `image.ts`       | image atom, not linked          |
+| `imageLinkedComponent`                                                                                                                                                                        | `imageLinked.ts` | link atom around the image atom |
+| `italicComponent`, `strongComponent`, `listComponent`, `titleComponent`, `subtitleComponent`, `buttonComponent`, `separatorComponent`, `mainTitleImageComponent`, `paragraphComponentUpdated` | matching files   | atoms or `stringify-attributes` |
 
 `imageComponent` is the image. `imageLinkedComponent` is the anchor around that same image. Do not fold the link back into the image.
 
@@ -157,12 +160,12 @@ npm install @llazyemail/simple-tags
 
 ## Build output
 
-| File | Format | package.json field |
-|---|---|---|
-| `dist/index.cjs.js` | CommonJS | `main` |
-| `dist/index.es.js` | ESM | `module` |
-| `dist/index.iife.js` | Browser IIFE, global `newsletterLayoutsTypographyPlainJS` | `browser` |
-| `dist/index.d.ts` | Types | `types` |
+| File                 | Format                                                    | package.json field |
+| -------------------- | --------------------------------------------------------- | ------------------ |
+| `dist/index.cjs.js`  | CommonJS                                                  | `main`             |
+| `dist/index.es.js`   | ESM                                                       | `module`           |
+| `dist/index.iife.js` | Browser IIFE, global `newsletterLayoutsTypographyPlainJS` | `browser`          |
+| `dist/index.d.ts`    | Types                                                     | `types`            |
 
 ## For agents
 

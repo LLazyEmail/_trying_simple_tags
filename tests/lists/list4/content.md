@@ -1,6 +1,6 @@
 **In this podcast, Mark and Todd talk about:**
 
-1. The making of *The Walking Dead: Saints & Sinners*
+1. The making of _The Walking Dead: Saints & Sinners_
 2. The ethics and morals behind violent video games in VR and tough decisions the team had to make
 3. The challenges they had to face throughout the development of the game
 4. Optimizing the game for the Oculus Quest
@@ -18,6 +18,5 @@
 - [https://hackernoon.com/tagged/gaming](https://hackernoon.com/tagged/gaming?ref=hackernoon.com)
 - [https://hackernoon.com/tagged/virtual-reality](https://hackernoon.com/tagged/virtual-reality?ref=hackernoon.com)
 - [https://hackernoon.com/tagged/vr](https://hackernoon.com/tagged/vr?ref=hackernoon.com)
-
 
 ## [Linkedin page of LLazyEmail](https://www.linkedin.com/company/llazyemail/)

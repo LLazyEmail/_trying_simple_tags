@@ -8,7 +8,11 @@ import { renderEmailImage, wrapEmailImage } from './image';
  * Linked image: the link atom is the anchor wrapper around the image atom.
  * `href` defaults to the `{href}` placeholder used by newsletter templates.
  */
-const imageLinkedComponent: ImageLinkedComponent = ({ src, altText, href = '{href}' }) => {
+const imageLinkedComponent: ImageLinkedComponent = ({
+  src,
+  altText,
+  href = '{href}',
+}) => {
   const img = renderEmailImage({ src, altText });
   const anchor = link({
     href: escapeAttr(href),

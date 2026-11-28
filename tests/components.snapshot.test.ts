@@ -24,7 +24,9 @@ describe('typography components — output baseline (pre-TS-conversion)', () => 
     expect(subtitleComponent({ content: 'A subtitle' })).toMatchSnapshot();
   });
   test('paragraphComponent', () => {
-    expect(paragraphComponent({ content: 'Some body text.' })).toMatchSnapshot();
+    expect(
+      paragraphComponent({ content: 'Some body text.' }),
+    ).toMatchSnapshot();
   });
   test('strongComponent', () => {
     expect(strongComponent({ content: 'bold text' })).toMatchSnapshot();
@@ -33,7 +35,9 @@ describe('typography components — output baseline (pre-TS-conversion)', () => 
     expect(italicComponent({ content: 'italic text' })).toMatchSnapshot();
   });
   test('linkComponent', () => {
-    expect(linkComponent({ href: 'https://example.com', content: 'Click here' })).toMatchSnapshot();
+    expect(
+      linkComponent({ href: 'https://example.com', content: 'Click here' }),
+    ).toMatchSnapshot();
   });
   test('listItemComponent', () => {
     expect(listItemComponent({ content: 'Item one' })).toMatchSnapshot();
@@ -46,18 +50,35 @@ describe('typography components — output baseline (pre-TS-conversion)', () => 
     expect(listComponent({ content: items })).toMatchSnapshot();
   });
   test('separatorComponent — with src', () => {
-    expect(separatorComponent({ src: 'https://example.com/img.png', altText: 'divider' })).toMatchSnapshot();
+    expect(
+      separatorComponent({
+        src: 'https://example.com/img.png',
+        altText: 'divider',
+      }),
+    ).toMatchSnapshot();
   });
   test('separatorComponent — no args (fallback ***)', () => {
     expect(separatorComponent()).toMatchSnapshot();
   });
   test('buttonComponent', () => {
-    expect(buttonComponent({ href: 'https://example.com', content: 'Read more' })).toMatchSnapshot();
+    expect(
+      buttonComponent({ href: 'https://example.com', content: 'Read more' }),
+    ).toMatchSnapshot();
   });
   test('imageComponent', () => {
-    expect(imageComponent({ src: 'https://example.com/img.png', altText: 'an image' })).toMatchSnapshot();
+    expect(
+      imageComponent({
+        src: 'https://example.com/img.png',
+        altText: 'an image',
+      }),
+    ).toMatchSnapshot();
   });
   test('imageLinkedComponent', () => {
-    expect(imageLinkedComponent({ src: 'https://example.com/img.png', altText: 'an image' })).toMatchSnapshot();
+    expect(
+      imageLinkedComponent({
+        src: 'https://example.com/img.png',
+        altText: 'an image',
+      }),
+    ).toMatchSnapshot();
   });
 });

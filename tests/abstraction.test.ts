@@ -12,7 +12,10 @@ describe('Abstraction Layer - Custom Layouts', () => {
     expect(italic).toContain('<i>');
     expect(italic).toContain('test');
 
-    const link = components.link({ href: 'https://example.com', content: 'click' });
+    const link = components.link({
+      href: 'https://example.com',
+      content: 'click',
+    });
     expect(link).toContain('<a');
     expect(link).toContain('https://example.com');
     expect(link).toContain('click');
@@ -29,7 +32,10 @@ describe('Abstraction Layer - Custom Layouts', () => {
     const italic = components.italic({ content: 'test' });
     expect(italic).toBe('<em>test</em>');
 
-    const link = components.link({ href: 'https://example.com', content: 'click' });
+    const link = components.link({
+      href: 'https://example.com',
+      content: 'click',
+    });
     expect(link).toBe('<a href="https://example.com">click</a>');
 
     const paragraph = components.paragraph({ content: 'text' });
@@ -58,8 +64,15 @@ describe('Abstraction Layer - Custom Layouts', () => {
     const italicData = baseItalic({ content: 'test' });
     expect(italicData).toEqual({ type: 'italic', content: 'test' });
 
-    const linkData = baseLink({ href: 'https://example.com', content: 'click' });
-    expect(linkData).toEqual({ type: 'link', href: 'https://example.com', content: 'click' });
+    const linkData = baseLink({
+      href: 'https://example.com',
+      content: 'click',
+    });
+    expect(linkData).toEqual({
+      type: 'link',
+      href: 'https://example.com',
+      content: 'click',
+    });
 
     const paragraphData = baseParagraph({ content: 'text' });
     expect(paragraphData).toEqual({ type: 'paragraph', content: 'text' });

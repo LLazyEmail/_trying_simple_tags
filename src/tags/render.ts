@@ -1,9 +1,13 @@
-import type { ContentBlockTag, FooterTag, HeaderTag, Tag } from '../../types/tags';
+import type {
+  ContentBlockTag,
+  FooterTag,
+  HeaderTag,
+  Tag,
+} from '../../types/tags';
 import type { HeroSection, TwoColumnLayout } from '../../types/layouts';
 import type { IEmailRenderer, IRenderer } from '../../types/renderer';
 import { RenderError } from '../errors';
 import { escapeHtml } from '../escape';
-
 
 const styleToString = (style?: Record<string, string>, extra?: string) => {
   const parts = [
@@ -13,13 +17,22 @@ const styleToString = (style?: Record<string, string>, extra?: string) => {
   return parts.length ? ` style="${escapeHtml(parts.join(';'))}"` : '';
 };
 
-const openAttrs = (tag: { id?: string; className?: string }, styleAttr: string) => {
+const openAttrs = (
+  tag: { id?: string; className?: string },
+  styleAttr: string,
+) => {
   const id = tag.id ? ` id="${escapeHtml(tag.id)}"` : '';
-  const className = tag.className ? ` class="${escapeHtml(tag.className)}"` : '';
+  const className = tag.className
+    ? ` class="${escapeHtml(tag.className)}"`
+    : '';
   return `${id}${className}${styleAttr}`;
 };
 
-const requireText = (tagName: string, value: string | undefined, label: string) => {
+const requireText = (
+  tagName: string,
+  value: string | undefined,
+  label: string,
+) => {
   if (!value || !value.trim()) {
     throw new RenderError(tagName, `${label} is required`);
   }
@@ -88,7 +101,10 @@ export const renderTag = (tag: Tag): string => {
       return heroRenderer.render(tag);
     default: {
       const unknown: never = tag;
-      throw new RenderError('tag', `unsupported tag ${JSON.stringify(unknown)}`);
+      throw new RenderError(
+        'tag',
+        `unsupported tag ${JSON.stringify(unknown)}`,
+      );
     }
   }
 };

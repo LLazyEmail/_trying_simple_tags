@@ -9,14 +9,14 @@ const { replaceMarkdown } = require('atherdon-callbacks');
 // const outFolder = resolve('src/tests', 'directory', '../_generated');
 
 describe('testing complex links', () => {
-//   it("renders xxx", async () => {
-//     let markdown = await readSourceFile(root+"/sponsorship.md");
-//     let parsedContent = {
-//       content: markdown,
-//     };
-//     replaceMarkdown(REGEXP_SPONSORSHIP, sponsorship, parsedContent);
-//     const fileName = "sponsorship.html";
-//     await write(fileName, parsedContent.content, "src/tests/sponsorship");
-//     expect(1).toBe(1);
-//   });
+  //   it("renders xxx", async () => {
+  //     let markdown = await readSourceFile(root+"/sponsorship.md");
+  //     let parsedContent = {
+  //       content: markdown,
+  //     };
+  //     replaceMarkdown(REGEXP_SPONSORSHIP, sponsorship, parsedContent);
+  //     const fileName = "sponsorship.html";
+  //     await write(fileName, parsedContent.content, "src/tests/sponsorship");
+  //     expect(1).toBe(1);
+  //   });
 });

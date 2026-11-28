@@ -3,11 +3,16 @@ import imageComponent from '../src/components/image';
 describe('imageComponent', () => {
   describe('HTML structure', () => {
     test('returns a string', () => {
-      expect(typeof imageComponent({ src: 'img.png', altText: 'test' })).toBe('string');
+      expect(typeof imageComponent({ src: 'img.png', altText: 'test' })).toBe(
+        'string',
+      );
     });
 
     test('contains an <img> element', () => {
-      const result = imageComponent({ src: 'https://example.com/img.png', altText: 'photo' });
+      const result = imageComponent({
+        src: 'https://example.com/img.png',
+        altText: 'photo',
+      });
       expect(result).toContain('<img');
     });
 
@@ -27,12 +32,18 @@ describe('imageComponent', () => {
 
   describe('attributes', () => {
     test('sets the src attribute to the provided URL', () => {
-      const result = imageComponent({ src: 'https://example.com/photo.jpg', altText: 'alt' });
+      const result = imageComponent({
+        src: 'https://example.com/photo.jpg',
+        altText: 'alt',
+      });
       expect(result).toContain('src="https://example.com/photo.jpg"');
     });
 
     test('sets the alt attribute from altText', () => {
-      const result = imageComponent({ src: 'img.png', altText: 'my image description' });
+      const result = imageComponent({
+        src: 'img.png',
+        altText: 'my image description',
+      });
       expect(result).toContain('alt="my image description"');
     });
 

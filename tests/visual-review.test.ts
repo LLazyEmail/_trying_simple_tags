@@ -21,7 +21,9 @@ describe('Visual Review - Rendered Components', () => {
   test('Display all rendered components for visual review', () => {
     console.log('\n');
     console.log('╔' + '═'.repeat(78) + '╗');
-    console.log('║' + ' '.repeat(20) + 'VISUAL COMPONENT REVIEW' + ' '.repeat(32) + '║');
+    console.log(
+      '║' + ' '.repeat(20) + 'VISUAL COMPONENT REVIEW' + ' '.repeat(32) + '║',
+    );
     console.log('╚' + '═'.repeat(78) + '╝');
     console.log('\n');
 
@@ -78,7 +80,10 @@ describe('Visual Review - Rendered Components', () => {
 
     console.log('\n📌 LINK COMPONENT');
     console.log(separator);
-    const linkHtml = linkComponent({ href: 'https://example.com', content: 'Click here' });
+    const linkHtml = linkComponent({
+      href: 'https://example.com',
+      content: 'Click here',
+    });
     console.log(linkHtml);
     console.log(separator);
 
@@ -116,7 +121,10 @@ describe('Visual Review - Rendered Components', () => {
 
     console.log('\n📌 BUTTON COMPONENT');
     console.log(separator);
-    const buttonHtml = buttonComponent({ href: 'https://example.com', content: 'Read more' });
+    const buttonHtml = buttonComponent({
+      href: 'https://example.com',
+      content: 'Read more',
+    });
     console.log(buttonHtml);
     console.log(separator);
 
@@ -149,7 +157,9 @@ describe('Visual Review - Rendered Components', () => {
 
     console.log('\n');
     console.log('╔' + '═'.repeat(78) + '╗');
-    console.log('║' + ' '.repeat(25) + 'END OF VISUAL REVIEW' + ' '.repeat(31) + '║');
+    console.log(
+      '║' + ' '.repeat(25) + 'END OF VISUAL REVIEW' + ' '.repeat(31) + '║',
+    );
     console.log('╚' + '═'.repeat(78) + '╝');
     console.log('\n');
 

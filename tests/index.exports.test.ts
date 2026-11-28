@@ -52,7 +52,9 @@ describe('typographyComponents (main module export)', () => {
     expect(typographyComponents.italicComponent({ content: 'hello' })).toBe(
       italicComponent({ content: 'hello' }),
     );
-    expect(typographyComponents.separatorComponent()).toBe(separatorComponent());
+    expect(typographyComponents.separatorComponent()).toBe(
+      separatorComponent(),
+    );
     expect(typographyComponents.listComponent({ content: '<li>x</li>' })).toBe(
       listComponent({ content: '<li>x</li>' }),
     );

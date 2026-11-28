@@ -53,7 +53,9 @@ describe('paragraphComponent', () => {
     });
 
     test('passes through inline HTML content', () => {
-      const result = paragraphComponent({ content: '<strong>bold</strong> normal' });
+      const result = paragraphComponent({
+        content: '<strong>bold</strong> normal',
+      });
       expect(result).toContain('<strong>bold</strong>');
     });
   });

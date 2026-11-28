@@ -12,5 +12,4 @@
 - [Blockchain Can Create a User-Focused Gaming Industry - Unhashed #5](https://hackernoon.com/blockchain-can-create-a-user-focused-gaming-industry-unhashed-5-tl1x34i6)
 - [Why is everyone going crazy over NFT?](https://hackernoon.com/why-is-everyone-going-crazy-over-nft-11m33ea)
 
-
 ## [Linkedin page of LLazyEmail](https://www.linkedin.com/company/llazyemail/)

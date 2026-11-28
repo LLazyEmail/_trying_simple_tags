@@ -15,7 +15,9 @@ describe('attribute and text escaping', () => {
       altText: 'say "hi" <tag>',
     });
     expect(result).toContain('src="https://x.com/img?a=1' + amp + 'b=2"');
-    expect(result).toContain('alt="say ' + quot + 'hi' + quot + ' ' + lt + 'tag' + gt + '"');
+    expect(result).toContain(
+      'alt="say ' + quot + 'hi' + quot + ' ' + lt + 'tag' + gt + '"',
+    );
     expect(result).not.toContain('a=1&b=2');
   });
 

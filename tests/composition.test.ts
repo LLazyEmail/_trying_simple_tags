@@ -21,7 +21,10 @@ describe('component composition', () => {
   });
 
   test('paragraphComponent containing a linkComponent renders both', () => {
-    const link = linkComponent({ href: 'https://example.com', content: 'read more' });
+    const link = linkComponent({
+      href: 'https://example.com',
+      content: 'read more',
+    });
     const result = paragraphComponent({ content: `Some text. ${link}` });
 
     expect(result).toContain('Some text.');
@@ -31,7 +34,9 @@ describe('component composition', () => {
 
   test('paragraphComponent containing strongComponent text renders bold inline', () => {
     const strong = strongComponent({ content: 'important point' });
-    const result = paragraphComponent({ content: `Here is an ${strong} to make.` });
+    const result = paragraphComponent({
+      content: `Here is an ${strong} to make.`,
+    });
 
     expect(result).toContain('<strong');
     expect(result).toContain('important point');
