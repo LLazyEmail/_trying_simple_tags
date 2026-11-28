@@ -1,4 +1,4 @@
-import type { MainTitleImageComponent } from '../../types/components';
+import type { MainTitleImageComponent } from '@llazyemail/component-types';
 import imageComponent from './image';
 
 /** Same unlinked image as imageComponent. Use imageLinkedComponent for an anchor wrapper. */

@@ -1,4 +1,4 @@
-import type { ImageComponent } from '../../types/components';
+import type { ImageComponent } from '@llazyemail/component-types';
 import image from './atoms/image';
 import text from './atoms/text';
 import { EMAIL_CLIENT_STYLES, IMAGE_STYLE } from '../helpers';

@@ -1,4 +1,4 @@
-import type { LinkComponent } from '../../types/components';
+import type { LinkComponent } from '@llazyemail/component-types';
 import link from './atoms/link';
 import { LINK_STYLE } from '../helpers';
 

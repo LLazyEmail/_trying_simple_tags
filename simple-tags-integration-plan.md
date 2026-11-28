@@ -1,6 +1,6 @@
 # simple-tags ⇄ component-types: integration plan
 
-Date: 2026-10-10 · Status: proposal, needs owner decisions (see §6) · §7 added: adoption across 20+ templates
+Date: 2026-10-10 · Status: Phase 0 and Phase 1 started 2026-11-28 · §7 added: adoption across 20+ templates
 
 Repos reviewed (shallow clones, default branch):
 - OLD `LLazyEmail/_trying_simple_tags` → `@llazyemail/simple-tags` v5.0.0 (runtime library, publishes to GitHub Packages)
@@ -132,3 +132,11 @@ Pin `@llazyemail/simple-tags` and `@llazyemail/component-types` to exact version
 ### 7.6 Not verified here
 
 Templates could not be rendered in this sandbox (their dependency comes from the blocked npm registry), so the snapshots, escape probe and class coupling test are proposals that must be generated and run on your side. Counts in 7.1 are regex counts over source and indicative only.
+
+
+## 8. Started 2026-11-28
+
+- Main repo PR #71 merged: `ImageLinkedProps.href` added, `@llazyemail/component-types@0.1.1` published from main.
+- This repo now depends on that package. The 15 component files import their prop types from it. `types/components.ts` is gone.
+- The default export `satisfies TypographyComponents`, so contract drift fails typecheck.
+- CI authenticates to GitHub Packages so the new dependency installs.

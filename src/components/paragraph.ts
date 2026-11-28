@@ -1,4 +1,4 @@
-import type { ParagraphComponent } from '../../types/components';
+import type { ParagraphComponent } from '@llazyemail/component-types';
 import { baseParagraph } from './base/paragraph';
 import { paragraphLayout } from './layouts/default';
 

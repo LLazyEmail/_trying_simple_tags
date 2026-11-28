@@ -1,5 +1,5 @@
 import stringifyAttributes from 'stringify-attributes';
-import type { ButtonComponent } from '../../types/components';
+import type { ButtonComponent } from '@llazyemail/component-types';
 const buttonComponent: ButtonComponent = ({ href, content }) => {
   const attributes = {
     class: `mlContentButton`,

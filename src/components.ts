@@ -1,3 +1,4 @@
+import type { TypographyComponents } from '@llazyemail/component-types';
 import headingComponent from './components/heading';
 import imageComponent from './components/image';
 import imageLinkedComponent from './components/imageLinked';
@@ -36,4 +37,4 @@ const typographyComponents = {
   atoms,
 };
 
-export default typographyComponents;
+export default typographyComponents satisfies TypographyComponents;
