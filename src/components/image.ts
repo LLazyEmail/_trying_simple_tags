@@ -1,4 +1,6 @@
 import type { ImageComponent } from '@llazyemail/component-types';
+import { baseImage } from './base/image';
+import { imageLayout } from './layouts/default';
 import image from './atoms/image';
 import text from './atoms/text';
 import { EMAIL_CLIENT_STYLES, IMAGE_STYLE } from '../helpers';
@@ -35,7 +37,7 @@ export const wrapEmailImage = (content: string) =>
     }),
   });
 
-const imageComponent: ImageComponent = ({ src, altText }) =>
-  wrapEmailImage(renderEmailImage({ src, altText }));
+const imageComponent: ImageComponent = ({ src, altText = '' }) =>
+  imageLayout(baseImage({ src, altText }));
 
 export default imageComponent;

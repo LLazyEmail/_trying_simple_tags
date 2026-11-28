@@ -148,3 +148,10 @@ Templates could not be rendered in this sandbox (their dependency comes from the
 - Atom prop types renamed to `*AtomProps`, with deprecated aliases for this major. Component prop types stay the `component-types` names.
 - Removed `declare module '*'`. Fixture `*.te-st.js` files are excluded from typecheck. `stringify-attributes` has an explicit declaration.
 - Version bumped to 6.0.0.
+
+
+## 10. Phase 3 started 2026-11-28
+
+- Template components now use base then layout: italic, link, list, strong, image, and title, plus the existing heading, paragraph, and listItem.
+- `titleLayout` is on `Layouts`. `createComponents` and `Layouts` are exported.
+- Default snapshots unchanged. Version 6.1.0.

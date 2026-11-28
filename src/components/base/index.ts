@@ -6,6 +6,7 @@ export { baseParagraph } from './paragraph';
 export { baseStrong } from './strong';
 export { baseImage } from './image';
 export { baseHeading } from './heading';
+export { baseTitle } from './title';
 
 export type { BaseItalicProps } from './italic';
 export type { BaseLinkProps } from './link';
@@ -15,3 +16,4 @@ export type { BaseParagraphProps } from './paragraph';
 export type { BaseStrongProps } from './strong';
 export type { BaseImageProps } from './image';
 export type { BaseHeadingProps } from './heading';
+export type { BaseTitleProps } from './title';

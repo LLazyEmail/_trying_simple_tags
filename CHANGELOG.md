@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.1.0
+
+- The template set now goes through base then layout: italic, link, list, strong, image, and title join heading, paragraph, and listItem.
+- `titleLayout` is on the seam. `createComponents` and `Layouts` are exported so a Postmark layout can implement them.
+- Default output is unchanged.
+
+
 ## 6.0.0
 
 Breaking correctness release.

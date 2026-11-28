@@ -3,8 +3,8 @@
  * This demonstrates how to use the same base components with different layouts
  */
 
-import { baseItalic, baseLink, baseList, baseListItem, baseParagraph, baseStrong, baseImage, baseHeading } from './base';
-import type { BaseItalicProps, BaseLinkProps, BaseListProps, BaseListItemProps, BaseParagraphProps, BaseStrongProps, BaseImageProps, BaseHeadingProps } from './base';
+import { baseItalic, baseLink, baseList, baseListItem, baseParagraph, baseStrong, baseImage, baseHeading, baseTitle } from './base';
+import type { BaseItalicProps, BaseLinkProps, BaseListProps, BaseListItemProps, BaseParagraphProps, BaseStrongProps, BaseImageProps, BaseHeadingProps, BaseTitleProps } from './base';
 
 export interface Layouts {
   italicLayout: (data: { content: string }) => string;
@@ -15,6 +15,7 @@ export interface Layouts {
   strongLayout: (data: { content: string }) => string;
   imageLayout: (data: { src: string; altText: string }) => string;
   headingLayout: (data: { content: string }) => string;
+  titleLayout: (data: { content: string }) => string;
 }
 
 export const createComponents = (layouts: Layouts) => {
@@ -50,6 +51,10 @@ export const createComponents = (layouts: Layouts) => {
     heading: (props: BaseHeadingProps) => {
       const data = baseHeading(props);
       return layouts.headingLayout(data);
+    },
+    title: (props: BaseTitleProps) => {
+      const data = baseTitle(props);
+      return layouts.titleLayout(data);
     },
   };
 };

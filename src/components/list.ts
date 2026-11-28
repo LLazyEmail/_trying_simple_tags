@@ -1,7 +1,7 @@
 import type { ListComponent } from '@llazyemail/component-types';
-import text from './atoms/text';
+import { baseList } from './base/list';
+import { listLayout } from './layouts/default';
 
-const listComponent: ListComponent = ({ content }) =>
-  text({ tag: 'ul', attributes: 'dir="ltr"', content });
+const listComponent: ListComponent = ({ content }) => listLayout(baseList({ content }));
 
 export default listComponent;

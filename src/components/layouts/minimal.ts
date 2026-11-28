@@ -34,3 +34,7 @@ export const imageLayout = (data: { src: string; altText: string }): string => {
 export const headingLayout = (data: { content: string }): string => {
   return `<h3>${data.content}</h3>`;
 };
+
+export const titleLayout = (data: { content: string }): string => {
+  return `<h1>${data.content}</h1>`;
+};
